@@ -3,7 +3,7 @@ export const CABINET_CONFIG = {
   slogan: "Votre sourire, notre priorité",
   subtitle: "Des soins dentaires d'excellence dans un cadre moderne et rassurant. Notre équipe vous accompagne avec bienveillance pour une santé bucco-dentaire optimale.",
   address: "21 Rue Léonard de Vinci",
-  logo: "/logo.png",
+  logo: "/logo1.png",
   city: "Strasbourg",
   zip: "67200",
   phone: "03 88 67 72 57",

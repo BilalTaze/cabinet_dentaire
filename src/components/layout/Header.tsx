@@ -32,7 +32,7 @@ const Header = () => {
               {CABINET_CONFIG.phone}
             </a>
           </div>
-          <span>Lun-Jeu : 9h-19h | Ven : 9h-18h | Sam-Dim : Fermé</span>
+          <span>Lun-Jeu : 9h-19h | Ven : 9h-18h</span>
         </div>
       </div>
 
@@ -42,7 +42,7 @@ const Header = () => {
           <img
             src={CABINET_CONFIG.logo}
             alt="Logo du cabinet"
-            className="h-10 w-auto object-contain"
+            className="h-14 w-auto object-contain"
           />
         </Link>
 
