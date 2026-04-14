@@ -114,8 +114,8 @@ html {
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground;
-  }
+  @apply text-3xl md:text-4xl lg:text-5xl font-[Cormorant] font-bold text-foreground;
+}
 
   .section-subtitle {
     @apply text-lg md:text-xl text-muted-foreground max-w-2xl;

@@ -8,11 +8,12 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-serif font-bold text-sm">CD</span>
-            </div>
-            <span className="font-serif font-bold text-lg">{CABINET_CONFIG.name}</span>
+          <div className="mb-4">
+            <img 
+              src="/logo_fond.png" 
+              alt="Logo" 
+              className="h-14 w-auto object-contain"
+            />
           </div>
           <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
             Des soins dentaires d'excellence dans un cadre moderne et rassurant.

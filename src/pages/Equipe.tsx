@@ -63,7 +63,7 @@ const Equipe = () => {
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
                     <Award size={18} className="text-accent" />
-                    <h3 className="font-serif font-bold">Diplômes & formations</h3>
+                    <h3 className="font-[Cormorant] font-bold">Diplômes & formations</h3>
                   </div>
                   <ul className="space-y-1.5 text-sm text-muted-foreground">
                     {member.diplomas.map((d, j) => (

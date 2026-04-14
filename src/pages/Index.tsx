@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, CreditCard, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote, GripVertical } from "lucide-react";
+import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote /*, GripVertical*/ } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, REVIEWS, FAQ_ITEMS, TECHNOLOGIES } from "@/config/cabinet";
@@ -8,7 +8,7 @@ import dentistFemale from "@/assets/dentist-female.jpg";
 import dentistMale from "@/assets/dentist-male.jpg";
 import cabinetReception from "@/assets/cabinet-reception.jpg";
 import { Link } from "react-router-dom";
-import { useState, useRef, useCallback } from "react";
+// import { useState, useRef, useCallback } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -61,7 +61,6 @@ const TrustBanner = () => {
     { icon: AlertCircle, label: "Urgences acceptées" },
     { icon: ShieldCheck, label: "Conventionné" },
     { icon: Accessibility, label: "Accès PMR" },
-    { icon: CreditCard, label: "Paiement facilité" },
   ];
   return (
     <section className="bg-card border-y border-border">
@@ -247,89 +246,89 @@ const TechSection = () => {
   );
 };
 
-/* ============ BEFORE / AFTER ============ */
-const beforeAfterCases = [
-  { label: "Blanchiment dentaire", before: dentistFemale, after: dentistMale },
-  { label: "Facettes céramique", before: cabinetReception, after: heroImg },
-  { label: "Alignement dentaire", before: heroImg, after: dentistFemale },
-];
+// /* ============ BEFORE / AFTER ============ */
+// const beforeAfterCases = [
+//   { label: "Blanchiment dentaire", before: dentistFemale, after: dentistMale },
+//   { label: "Facettes céramique", before: cabinetReception, after: heroImg },
+//   { label: "Alignement dentaire", before: heroImg, after: dentistFemale },
+// ];
 
-const BeforeAfterSlider = ({ before, after }: { before: string; after: string }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState(50);
-  const dragging = useRef(false);
+// const BeforeAfterSlider = ({ before, after }: { before: string; after: string }) => {
+//   const containerRef = useRef<HTMLDivElement>(null);
+//   const [pos, setPos] = useState(50);
+//   const dragging = useRef(false);
 
-  const updatePos = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    setPos((x / rect.width) * 100);
-  }, []);
+//   const updatePos = useCallback((clientX: number) => {
+//     if (!containerRef.current) return;
+//     const rect = containerRef.current.getBoundingClientRect();
+//     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+//     setPos((x / rect.width) * 100);
+//   }, []);
 
-  const onPointerDown = (e: React.PointerEvent) => {
-    dragging.current = true;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    updatePos(e.clientX);
-  };
-  const onPointerMove = (e: React.PointerEvent) => { if (dragging.current) updatePos(e.clientX); };
-  const onPointerUp = () => { dragging.current = false; };
+//   const onPointerDown = (e: React.PointerEvent) => {
+//     dragging.current = true;
+//     (e.target as HTMLElement).setPointerCapture(e.pointerId);
+//     updatePos(e.clientX);
+//   };
+//   const onPointerMove = (e: React.PointerEvent) => { if (dragging.current) updatePos(e.clientX); };
+//   const onPointerUp = () => { dragging.current = false; };
 
-  return (
-    <div
-      ref={containerRef}
-      className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-col-resize select-none"
-      style={{ boxShadow: "var(--shadow-card)" }}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-    >
-      <img src={after} alt="Après" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-        <img src={before} alt="Avant" className="absolute inset-0 w-full h-full object-cover" style={{ minWidth: containerRef.current ? `${containerRef.current.offsetWidth}px` : "100%" }} />
-      </div>
-      <div className="absolute top-0 bottom-0" style={{ left: `${pos}%`, transform: "translateX(-50%)" }}>
-        <div className="w-0.5 h-full bg-white/90" />
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center">
-          <GripVertical size={18} className="text-foreground" />
-        </div>
-      </div>
-      <span className="absolute top-3 left-3 bg-card/80 backdrop-blur-sm text-xs font-medium px-2 py-1 rounded-full">Avant</span>
-      <span className="absolute top-3 right-3 bg-card/80 backdrop-blur-sm text-xs font-medium px-2 py-1 rounded-full">Après</span>
-    </div>
-  );
-};
+//   return (
+//     <div
+//       ref={containerRef}
+//       className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-col-resize select-none"
+//       style={{ boxShadow: "var(--shadow-card)" }}
+//       onPointerDown={onPointerDown}
+//       onPointerMove={onPointerMove}
+//       onPointerUp={onPointerUp}
+//     >
+//       <img src={after} alt="Après" className="absolute inset-0 w-full h-full object-cover" />
+//       <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
+//         <img src={before} alt="Avant" className="absolute inset-0 w-full h-full object-cover" style={{ minWidth: containerRef.current ? `${containerRef.current.offsetWidth}px` : "100%" }} />
+//       </div>
+//       <div className="absolute top-0 bottom-0" style={{ left: `${pos}%`, transform: "translateX(-50%)" }}>
+//         <div className="w-0.5 h-full bg-white/90" />
+//         <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center">
+//           <GripVertical size={18} className="text-foreground" />
+//         </div>
+//       </div>
+//       <span className="absolute top-3 left-3 bg-card/80 backdrop-blur-sm text-xs font-medium px-2 py-1 rounded-full">Avant</span>
+//       <span className="absolute top-3 right-3 bg-card/80 backdrop-blur-sm text-xs font-medium px-2 py-1 rounded-full">Après</span>
+//     </div>
+//   );
+// };
 
-const BeforeAfterSection = () => {
-  const [activeCase, setActiveCase] = useState(0);
-  return (
-    <section className="section-padding bg-ivory">
-      <div className="container">
-        <div className="text-center mb-12">
-          <span className="text-accent font-medium text-sm uppercase tracking-wide">Résultats</span>
-          <h2 className="section-title mt-2 mb-4">Avant / Après</h2>
-          <p className="section-subtitle mx-auto">Découvrez quelques exemples de transformations réalisées par notre équipe.</p>
-        </div>
-        <div className="max-w-2xl mx-auto">
-          <div className="flex justify-center gap-2 mb-6">
-            {beforeAfterCases.map((c, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveCase(i)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCase === i ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"}`}
-              >
-                {c.label}
-              </button>
-            ))}
-          </div>
-          <BeforeAfterSlider before={beforeAfterCases[activeCase].before} after={beforeAfterCases[activeCase].after} />
-          <div className="mt-4 bg-secondary border border-border rounded-xl p-3 text-center">
-            <p className="text-xs text-muted-foreground">⚠️ Les résultats peuvent varier selon chaque patient. Ces images sont présentées à titre illustratif.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+// const BeforeAfterSection = () => {
+//   const [activeCase, setActiveCase] = useState(0);
+//   return (
+//     <section className="section-padding bg-ivory">
+//       <div className="container">
+//         <div className="text-center mb-12">
+//           <span className="text-accent font-medium text-sm uppercase tracking-wide">Résultats</span>
+//           <h2 className="section-title mt-2 mb-4">Avant / Après</h2>
+//           <p className="section-subtitle mx-auto">Découvrez quelques exemples de transformations réalisées par notre équipe.</p>
+//         </div>
+//         <div className="max-w-2xl mx-auto">
+//           <div className="flex justify-center gap-2 mb-6">
+//             {beforeAfterCases.map((c, i) => (
+//               <button
+//                 key={i}
+//                 onClick={() => setActiveCase(i)}
+//                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCase === i ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"}`}
+//               >
+//                 {c.label}
+//               </button>
+//             ))}
+//           </div>
+//           <BeforeAfterSlider before={beforeAfterCases[activeCase].before} after={beforeAfterCases[activeCase].after} />
+//           <div className="mt-4 bg-secondary border border-border rounded-xl p-3 text-center">
+//             <p className="text-xs text-muted-foreground">⚠️ Les résultats peuvent varier selon chaque patient. Ces images sont présentées à titre illustratif.</p>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 /* ============ REVIEWS ============ */
 const ReviewsSection = () => {
@@ -439,7 +438,7 @@ const Index = () => (
     <SoinsSection />
     <FirstVisitSection />
     <TeamSection />
-    <BeforeAfterSection />
+    {/* <BeforeAfterSection /> */}
     <TechSection />
     <ReviewsSection />
     <LocationSection />

@@ -1,5 +1,5 @@
 export const CABINET_CONFIG = {
-  name: "La maison dentaire",
+  name: "Centre Dentaire",
   slogan: "Votre sourire, notre priorité",
   subtitle: "Des soins dentaires d'excellence dans un cadre moderne et rassurant. Notre équipe vous accompagne avec bienveillance pour une santé bucco-dentaire optimale.",
   address: "21 Rue Léonard de Vinci",
@@ -21,8 +21,7 @@ export const CABINET_CONFIG = {
   googleMapsEmbedUrl: "https://www.google.com/maps?q=21+Rue+L%C3%A9onard+de+Vinci,+67200+Strasbourg,+France&output=embed",
   placeId: "VOTRE_PLACE_ID",
   googlePlacesApiKey: "VOTRE_GOOGLE_PLACES_API_KEY",
-  doctolibEmbedUrl: "https://www.doctolib.fr/dentiste/strasbourg/hakan-gumustepe-strasbourg",
-  doctolibProfileUrl: "https://www.doctolib.fr/dentiste/strasbourg/hakan-gumustepe-strasbourg",
+  doctolibProfileUrl: "https://www.doctolib.fr/centre-medical-et-dentaire/strasbourg/maison-dentaire-strasbourg",
   socialLinks: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",
