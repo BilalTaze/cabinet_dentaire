@@ -27,9 +27,9 @@ const Footer = () => (
 
         {/* Navigation */}
         <div>
-          <h3 className="font-serif font-bold text-base mb-4">Navigation</h3>
+          <h3 className="font-serif font-bold text-accent mb-4">Navigation</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
-            {[["Accueil", "/"], ["Le Cabinet", "/cabinet"], ["Nos Soins", "/soins"], ["L'Équipe", "/equipe"], ["Conseils", "/blog"], ["FAQ", "/faq"], ["Nous contacter", "/contact"]].map(([label, path]) => (
+            {[["Accueil", "/"], ["Le Cabinet", "/cabinet"], ["Nos Services", "/soins"], ["L'Équipe", "/equipe"], ["Conseils", "/blog"], ["FAQ", "/faq"], ["Nous contacter", "/contact"]].map(([label, path]) => (
               <li key={path}><Link to={path} className="hover:text-accent transition-colors">{label}</Link></li>
             ))}
           </ul>
@@ -37,7 +37,7 @@ const Footer = () => (
 
         {/* Soins */}
         <div>
-          <h3 className="font-serif font-bold text-base mb-4">Nos Soins</h3>
+          <h3 className="font-serif font-bold text-accent mb-4">Nos Services</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
             {["Détartrage", "Caries", "Couronnes", "Implants", "Esthétique", "Urgences", "Pédodontie"].map(s => (
               <li key={s}><Link to="/soins" className="hover:text-accent transition-colors">{s}</Link></li>
@@ -47,7 +47,7 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h3 className="font-serif font-bold text-base mb-4">Contact</h3>
+          <h3 className="font-serif font-bold text-accent mb-4">Contact</h3>
           <ul className="space-y-3 text-sm text-primary-foreground/70">
             <li className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0 text-accent" />{CABINET_CONFIG.address}, {CABINET_CONFIG.zip} {CABINET_CONFIG.city}</li>
             <li><a href={`tel:${CABINET_CONFIG.phone}`} className="flex items-center gap-2 hover:text-accent transition-colors"><Phone size={16} className="text-accent" />{CABINET_CONFIG.phone}</a></li>

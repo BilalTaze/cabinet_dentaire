@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Heart, Sparkles, Users, ChevronLeft, ChevronRight } from "lucide-react";
+import { ShieldCheck, Heart, Sparkles, Users, ChevronLeft, ChevronRight, FilePenLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG } from "@/config/cabinet";
 import { Calendar } from "lucide-react";
@@ -13,14 +13,7 @@ const fadeUp = {
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
 
-const galleryImages = [heroClinic, cabinetReception, dentalTech, cabinetReception, heroClinic, dentalTech];
-const galleryLabels = ["Salle de soins", "Accueil", "Équipements", "Réception", "Cabinet", "Technologie"];
-
 const Cabinet = () => {
-  const [activeImg, setActiveImg] = useState(0);
-
-  const prev = () => setActiveImg(i => (i - 1 + galleryImages.length) % galleryImages.length);
-  const next = () => setActiveImg(i => (i + 1) % galleryImages.length);
 
   return (
     <>
@@ -64,8 +57,9 @@ const Cabinet = () => {
             <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos engagements</span>
             <h2 className="section-title mt-2 mb-4">Ce qui nous anime</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
+              { icon: FilePenLine, title: "Soins accessibles pour tous", desc: "Ouverts à tous, nous pratiquons des honoraires conventionnés et des modalités de paiement adaptées." },
               { icon: Heart, title: "Bienveillance", desc: "Une approche humaine et rassurante, à l'écoute de vos besoins et appréhensions." },
               { icon: ShieldCheck, title: "Hygiène stricte", desc: "Protocoles de stérilisation rigoureux et traçabilité complète des instruments." },
               { icon: Sparkles, title: "Excellence", desc: "Des soins de haute qualité grâce à une formation continue et des équipements modernes." },
@@ -79,43 +73,6 @@ const Cabinet = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery with main image + thumbnails */}
-      <section className="section-padding bg-background">
-        <div className="container">
-          <div className="text-center mb-12">
-            <span className="text-accent font-medium text-sm uppercase tracking-wide">Galerie</span>
-            <h2 className="section-title mt-2 mb-4">Découvrez nos espaces</h2>
-          </div>
-          <div className="grid md:grid-cols-[1fr_280px] gap-4">
-            {/* Main image */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[16/10]" style={{ boxShadow: "var(--shadow-card)" }}>
-              <img src={galleryImages[activeImg]} alt={galleryLabels[activeImg]} className="w-full h-full object-cover transition-all duration-500" />
-              <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors" aria-label="Image précédente">
-                <ChevronLeft size={20} />
-              </button>
-              <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors" aria-label="Image suivante">
-                <ChevronRight size={20} />
-              </button>
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-card/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
-                {galleryLabels[activeImg]} — {activeImg + 1}/{galleryImages.length}
-              </div>
-            </div>
-            {/* Thumbnails */}
-            <div className="grid grid-cols-3 md:grid-cols-2 gap-2">
-              {galleryImages.map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveImg(i)}
-                  className={`rounded-xl overflow-hidden aspect-square transition-all ${activeImg === i ? "ring-2 ring-accent scale-[0.97]" : "opacity-70 hover:opacity-100"}`}
-                >
-                  <img src={img} alt={galleryLabels[i]} className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       </section>

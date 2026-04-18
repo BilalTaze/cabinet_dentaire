@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote /*, GripVertical*/ } from "lucide-react";
+import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote, ChevronLeft, ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, REVIEWS, FAQ_ITEMS, TECHNOLOGIES } from "@/config/cabinet";
@@ -7,6 +7,9 @@ import heroImg from "@/assets/hero-clinic.jpg";
 import dentistFemale from "@/assets/dentist-female.jpg";
 import dentistMale from "@/assets/dentist-male.jpg";
 import cabinetReception from "@/assets/cabinet-reception.jpg";
+import heroClinic from "@/assets/hero-clinic.jpg";
+import dentalTech from "@/assets/dental-tech.jpg";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 // import { useState, useRef, useCallback } from "react";
 
@@ -14,6 +17,9 @@ const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
+
+const cabinetGalleryImages = [heroClinic, cabinetReception, dentalTech, cabinetReception, heroClinic, dentalTech];
+const cabinetGalleryLabels = ["Salle de soins", "Accueil", "Équipements", "Réception", "Cabinet", "Technologie"];
 
 const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby };
 
@@ -77,39 +83,80 @@ const TrustBanner = () => {
 };
 
 /* ============ CABINET PRESENTATION ============ */
-const CabinetPresentation = () => (
-  <section className="section-padding bg-background">
-    <div className="container">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">Notre cabinet</motion.span>
-          <motion.h2 variants={fadeUp} custom={1} className="section-title mt-2 mb-6">Un cabinet à votre écoute</motion.h2>
-          <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed mb-4">
-            Au cœur de {CABINET_CONFIG.city}, notre cabinet vous accueille dans un environnement moderne, chaleureux et entièrement pensé pour votre confort. Notre équipe de praticiens expérimentés met tout en œuvre pour vous offrir des soins de qualité dans une atmosphère sereine.
-          </motion.p>
-          <motion.p variants={fadeUp} custom={3} className="text-muted-foreground leading-relaxed mb-6">
-            Nous croyons qu'une relation de confiance avec nos patients est la base de soins réussis. C'est pourquoi nous prenons le temps d'écouter, d'expliquer et de vous accompagner à chaque étape.
-          </motion.p>
-          <motion.div variants={fadeUp} custom={4}>
-            <Button variant="outline" className="border-accent text-accent hover:bg-mint-light" asChild>
-              <Link to="/cabinet">Découvrir le cabinet <ChevronRight size={16} className="ml-1" /></Link>
-            </Button>
+const CabinetPresentation = () => {
+  const [activeCabinetImg, setActiveCabinetImg] = useState(0);
+
+  const prevCabinetImg = () => setActiveCabinetImg(i => (i - 1 + cabinetGalleryImages.length) % cabinetGalleryImages.length);
+  const nextCabinetImg = () => setActiveCabinetImg(i => (i + 1) % cabinetGalleryImages.length);
+
+  return (
+    <section className="section-padding bg-background">
+      <div className="container">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">Notre cabinet</motion.span>
+            <motion.h2 variants={fadeUp} custom={1} className="section-title mt-2 mb-6">Bienvenue à La Maison Dentaire</motion.h2>
+            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed mb-4">
+              Au cœur de {CABINET_CONFIG.city}, notre structure vous accueille dans un environnement moderne, chaleureux et entièrement pensé pour votre confort. Notre équipe de praticiens expérimentés met tout en œuvre pour vous offrir des soins de qualité dans une atmosphère sereine.
+            </motion.p>
+            <motion.p variants={fadeUp} custom={3} className="text-muted-foreground leading-relaxed mb-6">
+              Nous croyons qu'une relation de confiance avec nos patients est la base de soins réussis. C'est pourquoi nous prenons le temps d'écouter, d'expliquer et de vous accompagner à chaque étape.
+            </motion.p>
+            <motion.div variants={fadeUp} custom={4}>
+              <Button variant="outline" className="border-accent text-accent hover:bg-mint-light" asChild>
+                <Link to="/cabinet">Découvrir le cabinet <ChevronRight size={16} className="ml-1" /></Link>
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-          <img src={cabinetReception} alt="Accueil du cabinet" className="rounded-2xl w-full object-cover aspect-[4/3]" style={{ boxShadow: "var(--shadow-card)" }} />
-        </motion.div>
+          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="space-y-3 max-w-lg mx-auto md:max-w-none w-full">
+            <div className="relative rounded-2xl overflow-hidden aspect-[7/5] md:max-w-[560px] w-full mx-auto" style={{ boxShadow: "var(--shadow-card)" }}>
+              <img
+                src={cabinetGalleryImages[activeCabinetImg]}
+                alt={cabinetGalleryLabels[activeCabinetImg]}
+                className="w-full h-full object-cover transition-all duration-500"
+              />
+              <button
+                onClick={prevCabinetImg}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors"
+                aria-label="Image précédente"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={nextCabinetImg}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors"
+                aria-label="Image suivante"
+              >
+                <ChevronRightIcon size={20} />
+              </button>
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-card/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
+                {cabinetGalleryLabels[activeCabinetImg]} — {activeCabinetImg + 1}/{cabinetGalleryImages.length}
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2 md:max-w-[300px] mx-auto w-full">
+              {cabinetGalleryImages.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveCabinetImg(i)}
+                  className={`rounded-xl overflow-hidden aspect-square transition-all ${activeCabinetImg === i ? "ring-2 ring-accent scale-[0.97]" : "opacity-70 hover:opacity-100"}`}
+                >
+                  <img src={img} alt={cabinetGalleryLabels[i]} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ============ SOINS ============ */
 const SoinsSection = () => (
   <section className="section-padding bg-ivory">
     <div className="container">
       <div className="text-center mb-12">
-        <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos soins</span>
+        <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos services</span>
         <h2 className="section-title mt-2 mb-4">Des soins adaptés à chaque besoin</h2>
         <p className="section-subtitle mx-auto">Une prise en charge complète, de la prévention aux traitements les plus avancés.</p>
       </div>
@@ -203,7 +250,7 @@ const TeamSection = () => (
             <div className="p-6">
               <h3 className="font-serif font-bold text-xl">{member.name}</h3>
               <p className="text-accent font-medium text-sm mb-2">{member.specialty}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{member.bio}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{member.diplomas}</p>
               <Link to={`/equipe#${member.id}`} className="mt-3 text-accent text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
                 Voir le profil <ArrowRight size={14} />
               </Link>

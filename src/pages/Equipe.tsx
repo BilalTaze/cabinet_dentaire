@@ -58,7 +58,6 @@ const Equipe = () => {
                 <h2 className="font-serif font-bold text-3xl mb-1">{member.name}</h2>
                 <p className="text-accent font-medium mb-1">{member.title}</p>
                 <p className="text-muted-foreground text-sm mb-6">{member.specialty}</p>
-                <p className="text-muted-foreground leading-relaxed mb-6">{member.bio}</p>
 
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
