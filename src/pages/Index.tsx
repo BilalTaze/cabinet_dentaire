@@ -9,9 +9,8 @@ import dentistMale from "@/assets/dentist-male.jpg";
 import cabinetReception from "@/assets/cabinet-reception.jpg";
 import heroClinic from "@/assets/hero-clinic.jpg";
 import dentalTech from "@/assets/dental-tech.jpg";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-// import { useState, useRef, useCallback } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -151,43 +150,136 @@ const CabinetPresentation = () => {
   );
 };
 
-/* ============ SOINS ============ */
-const SoinsSection = () => (
-  <section className="section-padding bg-ivory">
-    <div className="container">
-      <div className="text-center mb-12">
-        <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos services</span>
-        <h2 className="section-title mt-2 mb-4">Des soins adaptés à chaque besoin</h2>
-        <p className="section-subtitle mx-auto">Une prise en charge complète, de la prévention aux traitements les plus avancés.</p>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {SOINS.map((soin, i) => {
-          const Icon = soinIcons[soin.icon] || Sparkles;
-          return (
-            <motion.div
-              key={soin.id}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              custom={i * 0.5}
-              className="glass-card p-6 flex flex-col"
+/* ============ SERVICES ============ */
+const SoinsSection = () => {
+  const [activeSoinIndex, setActiveSoinIndex] = useState(0);
+  const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
+  const mobileSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollToSoin = (index: number) => {
+    const nextIndex = (index + SOINS.length) % SOINS.length;
+    const slide = mobileSlideRefs.current[nextIndex];
+
+    if (!slide) {
+      return;
+    }
+
+    slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    setActiveSoinIndex(nextIndex);
+  };
+
+  const handleMobileScroll = () => {
+    const track = mobileCarouselRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    const nextIndex = Math.round(track.scrollLeft / track.clientWidth);
+    setActiveSoinIndex(current => (current === nextIndex ? current : nextIndex));
+  };
+
+  const activeSoin = SOINS[activeSoinIndex];
+
+  return (
+    <section className="section-padding bg-ivory">
+      <div className="container">
+        <div className="text-center mb-12">
+          <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos services</span>
+          <h2 className="section-title mt-2 mb-4">Des soins adaptés à chaque besoin</h2>
+          <p className="section-subtitle mx-auto">Une prise en charge complète, de la prévention aux traitements les plus avancés.</p>
+        </div>
+
+        <div className="md:hidden">
+          <div
+            ref={mobileCarouselRef}
+            onScroll={handleMobileScroll}
+            className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {SOINS.map((soin, i) => {
+              const Icon = soinIcons[soin.icon] || Sparkles;
+
+              return (
+                <div
+                  key={soin.id}
+                  ref={el => {
+                    mobileSlideRefs.current[i] = el;
+                  }}
+                  className="w-[85%] shrink-0 snap-start"
+                >
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    custom={0}
+                    className="glass-card p-6 flex h-full flex-col overflow-hidden"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
+                      <Icon size={22} className="text-accent" />
+                    </div>
+                    <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
+                    <Link to="/soins" className="mt-4 text-accent text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                      En savoir plus <ArrowRight size={14} />
+                    </Link>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => scrollToSoin(activeSoinIndex - 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-colors hover:bg-secondary"
+              aria-label="Voir le soin précédent"
             >
-              <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
-                <Icon size={22} className="text-accent" />
-              </div>
-              <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
-              <Link to="/soins" className="mt-4 text-accent text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
-                En savoir plus <ArrowRight size={14} />
-              </Link>
-            </motion.div>
-          );
-        })}
+              <ChevronLeft size={18} />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => scrollToSoin(activeSoinIndex + 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-colors hover:bg-secondary"
+              aria-label="Voir le soin suivant"
+            >
+              <ChevronRightIcon size={18} />
+            </button>
+          </div>
+        </div>
+
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {SOINS.map((soin, i) => {
+            const Icon = soinIcons[soin.icon] || Sparkles;
+
+            return (
+              <motion.div
+                key={soin.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={i * 0.5}
+                className="glass-card p-6 flex flex-col"
+              >
+                <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
+                  <Icon size={22} className="text-accent" />
+                </div>
+                <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
+                <Link to="/soins" className="mt-4 text-accent text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                  En savoir plus <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ============ FIRST VISIT ============ */
 const FirstVisitSection = () => {
