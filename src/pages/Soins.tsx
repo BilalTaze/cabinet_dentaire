@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, Shield, Heart, ArrowRight, Sparkles, Crown, Wrench, Star, AlertCircle, Baby } from "lucide-react";
+import { Calendar, Clock, Shield, Heart, ArrowRight, Sparkles, Crown, Wrench, Star, AlertCircle, Baby, ShieldCheck, Radio, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG, SOINS } from "@/config/cabinet";
 import { useState, useRef, useEffect } from "react";
@@ -10,7 +10,7 @@ const fadeUp = {
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
 
-const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby };
+const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ShieldCheck, Radio, Stethoscope };
 
 const Soins = () => {
   const [activeSoin, setActiveSoin] = useState<string | null>(null);

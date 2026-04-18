@@ -39,7 +39,7 @@ const Footer = () => (
         <div>
           <h3 className="font-serif font-bold text-accent mb-4">Nos Services</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
-            {["Détartrage", "Caries", "Couronnes", "Implants", "Esthétique", "Urgences", "Pédodontie"].map(s => (
+            {["Parodontologie", "Soins conservateurs", "Prothèses", "Implants", "Esthétique", "Radiologie dentaire", "Chirurgie", "Urgences dentaires", "Pédodontie"].map(s => (
               <li key={s}><Link to="/soins" className="hover:text-accent transition-colors">{s}</Link></li>
             ))}
           </ul>
