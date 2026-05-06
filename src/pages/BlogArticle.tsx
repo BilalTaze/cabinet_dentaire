@@ -41,7 +41,7 @@ const BlogArticle = () => {
 
   return (
     <>
-      <section className="bg-primary py-20 md:py-15">
+      <section className="bg-primary pt-20 pb-12 md:pt-[7.5rem] md:pb-15">
         <div className="container max-w-3xl">
           <Link to="/blog" className="text-accent text-sm font-medium inline-flex items-center gap-1 mb-4 hover:underline">
             <ArrowLeft size={16} /> Retour aux articles

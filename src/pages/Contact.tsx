@@ -61,7 +61,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden">
+      <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
         <div className="absolute inset-0">
           <img src={heroImg} alt="Contact" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />

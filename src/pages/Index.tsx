@@ -24,7 +24,7 @@ const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, 
 
 /* ============ HERO ============ */
 const HeroSection = () => (
-  <section className="relative min-h-[75vh] flex items-center overflow-hidden">
+  <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
   <div className="absolute inset-0">
     <img src={heroImg} alt="Cabinet dentaire moderne" className="w-full h-full object-cover" />
     <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
