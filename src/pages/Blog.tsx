@@ -13,7 +13,7 @@ const Blog = () => (
   <>
     <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Conseils dentaires" className="w-full h-full object-cover" />
+        <img src={heroImg} alt="Conseils dentaires" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       </div>
       <div className="container relative z-10">

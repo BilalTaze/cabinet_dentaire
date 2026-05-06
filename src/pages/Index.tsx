@@ -26,7 +26,7 @@ const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, 
 const HeroSection = () => (
   <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
   <div className="absolute inset-0">
-    <img src={heroImg} alt="Cabinet dentaire moderne" className="w-full h-full object-cover" />
+    <img src={heroImg} alt="Cabinet dentaire moderne" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
     <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
   </div>
 
@@ -113,6 +113,8 @@ const CabinetPresentation = () => {
                 src={cabinetGalleryImages[activeCabinetImg]}
                 alt={cabinetGalleryLabels[activeCabinetImg]}
                 className="w-full h-full object-cover transition-all duration-500"
+                loading="lazy"
+                decoding="async"
               />
               <button
                 onClick={prevCabinetImg}
@@ -139,7 +141,7 @@ const CabinetPresentation = () => {
                   onClick={() => setActiveCabinetImg(i)}
                   className={`rounded-xl overflow-hidden aspect-square transition-all ${activeCabinetImg === i ? "ring-2 ring-accent scale-[0.97]" : "opacity-70 hover:opacity-100"}`}
                 >
-                  <img src={img} alt={cabinetGalleryLabels[i]} className="w-full h-full object-cover" />
+                  <img src={img} alt={cabinetGalleryLabels[i]} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 </button>
               ))}
             </div>
@@ -338,6 +340,8 @@ const TeamSection = () => (
               src={member.image === "female" ? dentistFemale : dentistMale}
               alt={member.name}
               className="w-full h-72 object-cover object-top"
+              loading="lazy"
+              decoding="async"
             />
             <div className="p-6">
               <h3 className="font-serif font-bold text-xl">{member.name}</h3>

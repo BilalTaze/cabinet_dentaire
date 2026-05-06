@@ -20,7 +20,7 @@ const Cabinet = () => {
       {/* Hero */}
       <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
         <div className="absolute inset-0">
-          <img src={cabinetReception} alt="Le Cabinet" className="w-full h-full object-cover" />
+          <img src={cabinetReception} alt="Le Cabinet" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         </div>
         <div className="container relative z-10">
@@ -45,7 +45,7 @@ const Cabinet = () => {
                 Au fil des années, nous avons investi dans les technologies les plus modernes tout en conservant ce qui fait notre identité : une relation de confiance authentique avec chacun de nos patients.
               </motion.p>
             </motion.div>
-            <motion.img initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} src={heroClinic} alt="Intérieur du cabinet" className="rounded-2xl w-full object-cover aspect-[4/3]" style={{ boxShadow: "var(--shadow-card)" }} />
+            <motion.img initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} src={heroClinic} alt="Intérieur du cabinet" className="rounded-2xl w-full object-cover aspect-[4/3]" style={{ boxShadow: "var(--shadow-card)" }} loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
