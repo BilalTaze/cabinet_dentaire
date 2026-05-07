@@ -4,42 +4,42 @@
 
   <!-- Pages principales -->
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/</loc>
+    <loc>https://la-maison-dentaire.fr/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/cabinet</loc>
+    <loc>https://la-maison-dentaire.fr/cabinet</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/soins</loc>
+    <loc>https://la-maison-dentaire.fr/soins</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/equipe</loc>
+    <loc>https://la-maison-dentaire.fr/equipe</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/contact</loc>
+    <loc>https://la-maison-dentaire.fr/contact</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/faq</loc>
+    <loc>https://la-maison-dentaire.fr/faq</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -47,63 +47,63 @@
 
   <!-- Blog -->
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog</loc>
+    <loc>https://la-maison-dentaire.fr/blog</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/bien-se-brosser-les-dents</loc>
+    <loc>https://la-maison-dentaire.fr/blog/bien-se-brosser-les-dents</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/frequence-consultation</loc>
+    <loc>https://la-maison-dentaire.fr/blog/frequence-consultation</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/sensibilite-dentaire</loc>
+    <loc>https://la-maison-dentaire.fr/blog/sensibilite-dentaire</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/dents-de-sagesse</loc>
+    <loc>https://la-maison-dentaire.fr/blog/dents-de-sagesse</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/gingivite</loc>
+    <loc>https://la-maison-dentaire.fr/blog/gingivite</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/blanchiment-dentaire</loc>
+    <loc>https://la-maison-dentaire.fr/blog/blanchiment-dentaire</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/implants-dentaires-guide</loc>
+    <loc>https://la-maison-dentaire.fr/blog/implants-dentaires-guide</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://cabinet-dentaire-du-parc.fr/blog/soins-dentaires-enfants</loc>
+    <loc>https://la-maison-dentaire.fr/blog/soins-dentaires-enfants</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

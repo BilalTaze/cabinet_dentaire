@@ -1,5 +1,5 @@
 export const CABINET_CONFIG = {
-  name: "Centre Dentaire",
+  name: "La Maison Dentaire",
   slogan: "Votre sourire, notre priorité",
   subtitle: "Des soins dentaires d'excellence dans un cadre moderne et rassurant. Notre équipe vous accompagne avec bienveillance pour une santé bucco-dentaire optimale.",
   address: "21 Rue Léonard de Vinci",

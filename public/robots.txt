@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://cabinet-dentaire-du-parc.fr/sitemap.xml
+Sitemap: https://la-maison-dentaire.fr/sitemap.xml
