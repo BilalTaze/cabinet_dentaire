@@ -10,7 +10,7 @@ const Footer = () => (
         <div>
           <div className="mb-4">
             <img 
-              src="/logo_fond.png" 
+              src="/logo_fond.webp" 
               alt="Logo" 
               className="h-14 w-auto object-contain"
             />
