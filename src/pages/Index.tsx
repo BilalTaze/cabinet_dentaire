@@ -101,7 +101,7 @@ const CabinetPresentation = () => {
             </motion.p>
             <motion.div variants={fadeUp} custom={4}>
               <Button variant="outline" className="border-accent text-accent hover:bg-mint-light" asChild>
-                <Link to="/cabinet">Découvrir le cabinet <ChevronRight size={16} className="ml-1" /></Link>
+                <Link to="/cabinet">Découvrir le centre <ChevronRight size={16} className="ml-1" /></Link>
               </Button>
             </motion.div>
           </motion.div>

@@ -47,7 +47,7 @@ const Contact = () => {
     });
 
     if (!res.ok) {
-      throw new Error("Erreur lors de l’envoi. Réessayez ou appelez le cabinet.");
+      throw new Error("Erreur lors de l’envoi. Réessayez ou appelez le centre.");
     }
 
     setSubmitted(true);

@@ -224,7 +224,7 @@ export const FAQ_ITEMS = [
   { q: "Les implants dentaires sont-ils remboursés ?", a: "Les implants ne sont pas remboursés par l'Assurance Maladie, mais de nombreuses mutuelles proposent une prise en charge partielle. Nous vous fournirons un devis détaillé." },
   { q: "À partir de quel âge emmener mon enfant chez le dentiste ?", a: "Nous recommandons une première visite dès l'âge de 3 ans, ou dès l'apparition des premières dents de lait si vous avez des inquiétudes." },
   { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons les cartes bancaires, les chèques, les espèces et la télétransmission avec votre carte Vitale." },
-  { q: "Le cabinet est-il accessible aux personnes à mobilité réduite ?", a: "Oui, notre cabinet est entièrement accessible aux personnes à mobilité réduite (PMR). Un accès de plain-pied et des équipements adaptés sont à votre disposition." },
+  { q: "Le centre est-il accessible aux personnes à mobilité réduite ?", a: "Oui, notre cabinet est entièrement accessible aux personnes à mobilité réduite (PMR). Un accès de plain-pied et des équipements adaptés sont à votre disposition." },
 ];
 
 export const BLOG_ARTICLES = [
