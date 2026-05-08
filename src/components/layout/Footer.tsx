@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Calendar, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Calendar, Facebook, Instagram, Linkedin, HeartPulse } from "lucide-react";
 import { CABINET_CONFIG } from "@/config/cabinet";
 
 const Footer = () => (
@@ -62,14 +62,21 @@ const Footer = () => (
             <Calendar size={16} />
             Prendre RDV
           </a>
+          <Link
+            to="/contact"
+            className="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-destructive/80 text-destructive-foreground text-sm font-medium hover:bg-destructive/100 transition-colors"
+          >
+            <HeartPulse size={16} />
+            Urgence dentaire
+          </Link>
         </div>
       </div>
 
       <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/50">
         <p>© {new Date().getFullYear()} {CABINET_CONFIG.name}. Tous droits réservés.</p>
         <div className="flex gap-4">
-          <Link to="/contact" className="hover:text-accent transition-colors">Mentions légales</Link>
-          <Link to="/contact" className="hover:text-accent transition-colors">Politique de confidentialité</Link>
+          <Link to="/mentions-legales" className="hover:text-accent transition-colors">Mentions légales</Link>
+          <Link to="/politique-confidentialite" className="hover:text-accent transition-colors">Politique de confidentialité</Link>
         </div>
       </div>
     </div>

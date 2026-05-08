@@ -13,6 +13,8 @@ import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
+import MentionsLegales from "./pages/MentionsLegales";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import NotFound from "./pages/NotFound";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -35,6 +37,8 @@ const App = () => (
             <Route path="/blog/:id" element={<BlogArticle />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

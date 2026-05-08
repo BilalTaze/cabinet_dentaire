@@ -1,7 +1,7 @@
 export const CABINET_CONFIG = {
   name: "La Maison Dentaire",
-  slogan: "Votre sourire, notre priorité",
-  subtitle: "Des soins dentaires d'excellence dans un cadre moderne et rassurant. Notre équipe vous accompagne avec bienveillance pour une santé bucco-dentaire optimale.",
+  slogan: "Votre centre de soins dentaires à Strasbourg",
+  subtitle: "Notre équipe vous accueille dans un environnement moderne et rassurant pour une prise en charge complète de votre santé bucco-dentaire. Située face à l’arrêt de tram Elsau, La Maison Dentaire reçoit adultes et enfants avec une approche humaine et accessible.",
   address: "21 Rue Léonard de Vinci",
   logo: "/logo1.webp",
   city: "Strasbourg",

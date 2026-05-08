@@ -93,13 +93,13 @@ const CabinetPresentation = () => {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">Notre cabinet</motion.span>
+            <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">  </motion.span>
             <motion.h2 variants={fadeUp} custom={1} className="section-title mt-2 mb-6">Bienvenue à La Maison Dentaire</motion.h2>
             <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed mb-4">
-              Au cœur de {CABINET_CONFIG.city}, notre structure vous accueille dans un environnement moderne, chaleureux et entièrement pensé pour votre confort. Notre équipe de praticiens expérimentés met tout en œuvre pour vous offrir des soins de qualité dans une atmosphère sereine.
+              La Maison Dentaire propose une prise en charge globale de la santé bucco-dentaire : soins conservateurs, urgences dentaires, esthétique du sourire, prévention et réhabilitation implantaire. Notre équipe s’attache à proposer des soins adaptés aux besoins de chaque patient, avec une attention particulière portée au confort et à la pédagogie.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="text-muted-foreground leading-relaxed mb-6">
-              Nous croyons qu'une relation de confiance avec nos patients est la base de soins réussis. C'est pourquoi nous prenons le temps d'écouter, d'expliquer et de vous accompagner à chaque étape.
+              Doté d’un plateau technique moderne et d’équipements de dernière génération, notre centre met tout en œuvre afin d’assurer précision, sécurité et qualité des soins. Nous prenons le temps d’écouter, d’expliquer et d’accompagner chaque patient à chaque étape de son parcours de soins.
             </motion.p>
             <motion.div variants={fadeUp} custom={4}>
               <Button variant="outline" className="border-accent text-accent hover:bg-mint-light" asChild>
@@ -293,7 +293,7 @@ const FirstVisitSection = () => {
   ];
   return (
     <section className="section-padding bg-background">
-      <div className="container">
+      <div className="container">   
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Première visite</span>
           <h2 className="section-title mt-2 mb-4">Comment se passe votre première consultation ?</h2>
