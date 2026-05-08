@@ -328,8 +328,8 @@ const TeamSection = () => (
     <div className="container">
       <div className="text-center mb-12">
         <span className="text-accent font-medium text-sm uppercase tracking-wide">Notre équipe</span>
-        <h2 className="section-title mt-2 mb-4">Des praticiens passionnés</h2>
-        <p className="section-subtitle mx-auto">Une équipe à taille humaine, dévouée à votre santé bucco-dentaire.</p>
+        <h2 className="section-title mt-2 mb-4">Des praticiens à votre écoute</h2>
+        <p className="section-subtitle mx-auto">Une équipe expérimentée, bienveillante et engagée pour votre santé bucco-dentaire.</p>
       </div>
       <div className="grid md:grid-cols-4 gap-5 max-w-7xl mx-auto">
         {TEAM_MEMBERS.map((member, i) => (
