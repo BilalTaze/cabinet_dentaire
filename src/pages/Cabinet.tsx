@@ -24,9 +24,9 @@ const Cabinet = () => {
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         </div>
         <div className="container relative z-10">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Le Cabinet</motion.h1>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Le Centre</motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-            Un espace moderne dédié à votre bien-être bucco-dentaire.
+            Un centre dentaire moderne à Strasbourg - Elsau
           </motion.p>
         </div>
       </section>
@@ -36,13 +36,13 @@ const Cabinet = () => {
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">Notre histoire</motion.span>
-              <motion.h2 variants={fadeUp} custom={1} className="section-title mt-2 mb-6">Un cabinet fondé sur des valeurs humaines</motion.h2>
+              <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">Le centre</motion.span>
+              <motion.h2 variants={fadeUp} custom={1} className="section-title mt-2 mb-6">Un espace moderne dédié à votre santé bucco-dentaire</motion.h2>
               <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed mb-4">
-                Fondé il y a plus de 15 ans, le {CABINET_CONFIG.name} est né de la volonté de proposer une dentisterie différente : plus humaine, plus douce, plus transparente. Nos praticiens partagent la conviction que chaque patient mérite d'être écouté et accompagné avec bienveillance.
+                Situé à Strasbourg - Elsau, La Maison Dentaire accueille adultes et enfants dans un envirronement moderne, accesible et chaleureux.
               </motion.p>
               <motion.p variants={fadeUp} custom={3} className="text-muted-foreground leading-relaxed">
-                Au fil des années, nous avons investi dans les technologies les plus modernes tout en conservant ce qui fait notre identité : une relation de confiance authentique avec chacun de nos patients.
+                Notre équipe de praticiens vous accompagne avec une approche centrée sur l'écoute, la prévention et la qualité des soins. 
               </motion.p>
             </motion.div>
             <motion.img initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} src={heroClinic} alt="Intérieur du cabinet" className="rounded-2xl w-full object-cover aspect-[4/3]" style={{ boxShadow: "var(--shadow-card)" }} loading="lazy" decoding="async" />

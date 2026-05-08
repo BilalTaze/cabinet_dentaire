@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { Calendar, Award, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG, TEAM_MEMBERS } from "@/config/cabinet";
-import dentistFemale from "@/assets/dentist-female.jpg";
-import dentistMale from "@/assets/dentist-male.jpg";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -30,7 +28,7 @@ const Equipe = () => {
   <>
     <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
       <div className="absolute inset-0">
-        <img src={dentistFemale} alt="Notre équipe" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
+        <div className="w-full h-full bg-mint-light" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       </div>
       <div className="container relative z-10">
@@ -46,14 +44,20 @@ const Equipe = () => {
         <div className="space-y-16">
           {TEAM_MEMBERS.map((member, i) => (
             <motion.div key={member.id} id={member.id} initial="hidden" whileInView="visible" viewport={{ once: true }} className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:[direction:rtl] [&>*]:md:[direction:ltr]" : ""}`}>
-              <motion.img
+              <motion.div
                 variants={fadeUp}
                 custom={0}
-                src={member.image === "female" ? dentistFemale : dentistMale}
-                alt={member.name}
-                className="rounded-2xl w-full max-w-md object-cover aspect-[3/4]"
+                className="rounded-2xl w-full max-w-md aspect-[3/4] bg-mint-light flex items-center justify-center"
                 style={{ boxShadow: "var(--shadow-card)" }}
-              />
+              >
+                <motion.span
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="text-accent/40 text-9xl font-serif font-bold"
+                >
+                  {member.name.charAt(0)}
+                </motion.span>
+              </motion.div>
               <motion.div variants={fadeUp} custom={1}>
                 <h2 className="font-serif font-bold text-3xl mb-1">{member.name}</h2>
                 <p className="text-accent font-medium mb-1">{member.title}</p>

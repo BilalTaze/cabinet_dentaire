@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote, ChevronLeft, ChevronRight as ChevronRightIcon } from "lucide-react";
+import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote, ChevronLeft, ChevronRight as ChevronRightIcon, Train, Navigation as NavigationIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, REVIEWS, FAQ_ITEMS, TECHNOLOGIES } from "@/config/cabinet";
 import heroImg from "@/assets/hero-clinic.jpg";
-import dentistFemale from "@/assets/dentist-female.jpg";
-import dentistMale from "@/assets/dentist-male.jpg";
 import cabinetReception from "@/assets/cabinet-reception.jpg";
 import heroClinic from "@/assets/hero-clinic.jpg";
 import dentalTech from "@/assets/dental-tech.jpg";
@@ -286,14 +284,14 @@ const SoinsSection = () => {
 /* ============ FIRST VISIT ============ */
 const FirstVisitSection = () => {
   const steps = [
-    { icon: Phone, title: "Accueil & échange", desc: "Un accueil chaleureux et un échange pour comprendre vos besoins et attentes." },
-    { icon: ScanLine, title: "Examen clinique complet", desc: "Un examen minutieux de votre bouche pour évaluer votre santé bucco-dentaire." },
-    { icon: Radio, title: "Radiographie si nécessaire", desc: "Des clichés numériques pour un diagnostic précis et approfondi." },
-    { icon: Star, title: "Plan de traitement", desc: "Un plan personnalisé, expliqué clairement, avec devis détaillé si nécessaire." },
+    { img: "/etape1.jpeg", title: "Accueil & échange", desc: "Un premier échange afin de comprendre vos besoins et le motif de votre consultation." },
+    { img: "/etape2.jpeg", title: "Examen clinique", desc: "Un examen bucco-dentaire complet pour évaluer votre santé orale." },
+    { img: "/etape3.jpeg", title: "Radiographie numérique", desc: "Des examens radiographiques peuvent être réalisés afin de compléter le diagnostic." },
+    { img: "/etape4.jpeg", title: "Plan de traitement", desc: "Votre plan de traitement vous est expliqué clairement et personnalisé selon vos besoins." },
   ];
   return (
     <section className="section-padding bg-background">
-      <div className="container">   
+      <div className="container">
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Première visite</span>
           <h2 className="section-title mt-2 mb-4">Comment se passe votre première consultation ?</h2>
@@ -302,11 +300,11 @@ const FirstVisitSection = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (
             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="text-center p-6">
-              <div className="w-16 h-16 rounded-2xl bg-mint-light flex items-center justify-center mx-auto mb-4">
-                <step.icon size={28} className="text-accent" />
+              <div className="w-30 h-30 rounded-2xl overflow-hidden mx-auto mb-4">
+                <img src={step.img} alt={step.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <div className="text-accent font-bold text-sm mb-2">Étape {i + 1}</div>
-              <h3 className="font-serif font-bold text-lg mb-2">{step.title}</h3>
+              <h3 className="font-[Cormorant] font-bold text-lg mb-2">{step.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
@@ -321,7 +319,7 @@ const FirstVisitSection = () => {
         </div>
       </div>
     </section>
-  );
+  );  
 };
 
 /* ============ TEAM ============ */
@@ -333,20 +331,21 @@ const TeamSection = () => (
         <h2 className="section-title mt-2 mb-4">Des praticiens passionnés</h2>
         <p className="section-subtitle mx-auto">Une équipe à taille humaine, dévouée à votre santé bucco-dentaire.</p>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-4 gap-5 max-w-7xl mx-auto">
         {TEAM_MEMBERS.map((member, i) => (
           <motion.div key={member.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="glass-card overflow-hidden">
-            <img
-              src={member.image === "female" ? dentistFemale : dentistMale}
-              alt={member.name}
-              className="w-full h-72 object-cover object-top"
-              loading="lazy"
-              decoding="async"
-            />
+            <div className="w-full h-80 bg-mint-light flex items-center justify-center">
+              <motion.span
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="text-accent/40 text-6xl font-serif font-bold"
+              >
+                {member.name.charAt(0)}
+              </motion.span>
+            </div>
             <div className="p-6">
               <h3 className="font-serif font-bold text-xl">{member.name}</h3>
-              <p className="text-accent font-medium text-sm mb-2">{member.specialty}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{member.diplomas}</p>
+              <p className="text-accent font-medium text-sm mb-2">{member.bio}</p>
               <Link to={`/equipe#${member.id}`} className="mt-3 text-accent text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
                 Voir le profil <ArrowRight size={14} />
               </Link>
@@ -367,7 +366,7 @@ const TechSection = () => {
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos technologies</span>
           <h2 className="section-title mt-2 mb-4">Équipements de dernière génération</h2>
-          <p className="section-subtitle mx-auto">Des technologies de pointe pour des soins plus précis, plus rapides et plus confortables.</p>
+          <p className="section-subtitle mx-auto">Des équipements modernes au service de la précision, du confort et de la sécurité des soins.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TECHNOLOGIES.map((tech, i) => {
@@ -383,6 +382,29 @@ const TechSection = () => {
               </motion.div>
             );
           })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ============ BRANDS ============ */
+const BrandsSection = () => {
+  const brands = [
+    { name: "KaVo", logo: "/kavo.png" },
+    { name: "Dexis", logo: "/dexis.png" },
+    { name: "Melag", logo: "/melag.png" },
+  ];
+  return (
+    <section className="bg-background pb-16">
+      <div className="container">
+        <p className="text-center text-muted-foreground text-sm uppercase tracking-wide font-medium mb-8">Technologies utilisées</p>
+        <div className="flex flex-wrap items-center justify-center gap-12">
+          {brands.map((brand) => (
+            <motion.div key={brand.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex items-center justify-center">
+              <img src={brand.logo} alt={brand.name} className="h-12 w-auto object-contain" loading="lazy" decoding="async" />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -474,44 +496,44 @@ const TechSection = () => {
 // };
 
 /* ============ REVIEWS ============ */
-const ReviewsSection = () => {
-  const avgRating = (REVIEWS.reduce((a, r) => a + r.rating, 0) / REVIEWS.length).toFixed(1);
-  return (
-    <section className="section-padding bg-primary text-primary-foreground">
-      <div className="container">
-        <div className="text-center mb-12">
-          <span className="text-accent font-medium text-sm uppercase tracking-wide">Avis patients</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mt-2 mb-4">Ce que disent nos patients</h2>
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <div className="flex gap-1">{[1,2,3,4,5].map(s => <Star key={s} size={24} className="fill-accent text-accent" />)}</div>
-            <span className="text-2xl font-bold">{avgRating}</span>
-            <span className="text-primary-foreground/60">/ 5 • {REVIEWS.length} avis</span>
-          </div>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {REVIEWS.slice(0, 6).map((review, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3} className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-6">
-              <Quote size={20} className="text-accent mb-3" />
-              <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">{review.text}</p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-sm">{review.author}</p>
-                  <p className="text-primary-foreground/50 text-xs">{review.date}</p>
-                </div>
-                <div className="flex gap-0.5">{Array.from({ length: review.rating }).map((_, j) => <Star key={j} size={14} className="fill-accent text-accent" />)}</div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        <div className="text-center mt-8">
-          <a href={`https://www.google.com/maps/place/?q=place_id:${CABINET_CONFIG.placeId}`} target="_blank" rel="noopener noreferrer" className="text-accent text-sm font-medium hover:underline">
-            Voir tous les avis sur Google →
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
+// const ReviewsSection = () => {
+//   const avgRating = (REVIEWS.reduce((a, r) => a + r.rating, 0) / REVIEWS.length).toFixed(1);
+//   return (
+//     <section className="section-padding bg-primary text-primary-foreground">
+//       <div className="container">
+//         <div className="text-center mb-12">
+//           <span className="text-accent font-medium text-sm uppercase tracking-wide">Avis patients</span>
+//           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mt-2 mb-4">Ce que disent nos patients</h2>
+//           <div className="flex items-center justify-center gap-4 mt-4">
+//             <div className="flex gap-1">{[1,2,3,4,5].map(s => <Star key={s} size={24} className="fill-accent text-accent" />)}</div>
+//             <span className="text-2xl font-bold">{avgRating}</span>
+//             <span className="text-primary-foreground/60">/ 5 • {REVIEWS.length} avis</span>
+//           </div>
+//         </div>
+//         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//           {REVIEWS.slice(0, 6).map((review, i) => (
+//             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3} className="bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-6">
+//               <Quote size={20} className="text-accent mb-3" />
+//               <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">{review.text}</p>
+//               <div className="flex items-center justify-between">
+//                 <div>
+//                   <p className="font-medium text-sm">{review.author}</p>
+//                   <p className="text-primary-foreground/50 text-xs">{review.date}</p>
+//                 </div>
+//                 <div className="flex gap-0.5">{Array.from({ length: review.rating }).map((_, j) => <Star key={j} size={14} className="fill-accent text-accent" />)}</div>
+//               </div>
+//             </motion.div>
+//           ))}
+//         </div>
+//         <div className="text-center mt-8">
+//           <a href={`https://www.google.com/maps/place/?q=place_id:${CABINET_CONFIG.placeId}`} target="_blank" rel="noopener noreferrer" className="text-accent text-sm font-medium hover:underline">
+//             Voir tous les avis sur Google →
+//           </a>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 /* ============ LOCATION ============ */
 const LocationSection = () => (
@@ -520,13 +542,17 @@ const LocationSection = () => (
       <div className="grid md:grid-cols-2 gap-12">
         <div>
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Nous trouver</span>
-          <h2 className="section-title mt-2 mb-6">Localisation & horaires</h2>
+          <h2 className="section-title mt-2 mb-6">Accès & horaires</h2>
           <div className="space-y-4 mb-6">
             <div className="flex items-start gap-3">
               <MapPin size={20} className="text-accent mt-1 shrink-0" />
               <div>
                 <p className="font-medium">{CABINET_CONFIG.address}</p>
                 <p className="text-muted-foreground text-sm">{CABINET_CONFIG.zip} {CABINET_CONFIG.city}</p>
+                <div className="flex items-center gap-1.5 mt-1.5 text-muted-foreground text-sm">
+                  <Train size={14} className="text-accent shrink-0" />
+                  <span>Face à l'arrêt de tram Elsau</span>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -545,15 +571,24 @@ const LocationSection = () => (
               </div>
             </div>
           </div>
-          <a
-            href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CABINET_CONFIG.address + " " + CABINET_CONFIG.city)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-accent font-medium text-sm hover:underline"
-          >
-            <MapPin size={16} />
-            Itinéraire Google Maps
-          </a>
+          <div className="space-y-3">
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CABINET_CONFIG.address + " " + CABINET_CONFIG.city)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 border border-accent/40 text-accent font-medium text-sm rounded-xl px-4 py-3 hover:bg-mint-light transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <NavigationIcon size={16} />
+                Voir l'itinéraire
+              </span>
+              <ExternalLink size={15} className="shrink-0" />
+            </a>
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
+              <ShieldCheck size={17} className="text-accent shrink-0" />
+              <span>Urgences dentaires acceptées selon disponibilités.</span>
+            </div>
+          </div>
         </div>
         <div className="rounded-2xl overflow-hidden h-80 md:h-auto" style={{ boxShadow: "var(--shadow-card)" }}>
           <iframe
@@ -583,7 +618,8 @@ const Index = () => (
     <TeamSection />
     {/* <BeforeAfterSection /> */}
     <TechSection />
-    <ReviewsSection />
+    <BrandsSection />
+    {/* <ReviewsSection /> */}
     <LocationSection />
   </>
 );

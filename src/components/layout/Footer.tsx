@@ -16,7 +16,7 @@ const Footer = () => (
             />
           </div>
           <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
-            Des soins dentaires d'excellence dans un cadre moderne et rassurant.
+            Centre de santé dentaire Strasbourg
           </p>
           <div className="flex gap-3">
             <a href={CABINET_CONFIG.socialLinks.facebook} className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors" aria-label="Facebook"><Facebook size={16} /></a>
@@ -39,7 +39,7 @@ const Footer = () => (
         <div>
           <h3 className="font-serif font-bold text-accent mb-4">Nos Services</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
-            {["Parodontologie", "Soins conservateurs", "Prothèses", "Implants", "Esthétique", "Radiologie dentaire", "Chirurgie", "Urgences dentaires", "Pédodontie"].map(s => (
+            {["Parodontologie", "Soins conservateurs", "Prothèses", "Implants", "Radiologie dentaire", "Chirurgie", "Urgences dentaires", "Pédodontie"].map(s => (
               <li key={s}><Link to="/soins" className="hover:text-accent transition-colors">{s}</Link></li>
             ))}
           </ul>
