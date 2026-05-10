@@ -47,7 +47,7 @@ const Equipe = () => {
               <motion.div
                 variants={fadeUp}
                 custom={0}
-                className="rounded-2xl w-full max-w-md aspect-[3/4] bg-mint-light flex items-center justify-center"
+                className="rounded-2xl w-full max-w-[250px] aspect-[3/4] bg-mint-light flex items-center justify-center"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <motion.span
@@ -61,9 +61,8 @@ const Equipe = () => {
               <motion.div variants={fadeUp} custom={1}>
                 <h2 className="font-serif font-bold text-3xl mb-1">{member.name}</h2>
                 <p className="text-accent font-medium mb-1">{member.title}</p>
-                <p className="text-muted-foreground text-sm mb-6">{member.specialty}</p>
 
-                <div className="mb-6">
+                <div className="mb-6 mt-6">
                   <div className="flex items-center gap-2 mb-3">
                     <Award size={18} className="text-accent" />
                     <h3 className="font-[Cormorant] font-bold">Diplômes & formations</h3>
@@ -73,14 +72,6 @@ const Equipe = () => {
                       <li key={j} className="flex items-start gap-2"><span className="text-accent mt-1">•</span>{d}</li>
                     ))}
                   </ul>
-                </div>
-
-                <div className="bg-mint-light rounded-xl p-4 mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Heart size={18} className="text-accent" />
-                    <h3 className="font-serif font-bold text-sm">Approche patient</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{member.approach}</p>
                 </div>
 
                 <Button className="bg-accent hover:bg-mint-dark text-accent-foreground" style={{ boxShadow: "var(--shadow-button)" }} asChild>

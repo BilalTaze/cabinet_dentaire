@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Phone, Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ChevronRight, MapPin, Clock, Car, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, Quote, ChevronLeft, ChevronRight as ChevronRightIcon, Train, Navigation as NavigationIcon, ExternalLink } from "lucide-react";
+import { Calendar, Phone, AlertCircle, ChevronRight, MapPin, Clock, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, ChevronLeft, ChevronRight as ChevronRightIcon, Train, Navigation as NavigationIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, REVIEWS, FAQ_ITEMS, TECHNOLOGIES } from "@/config/cabinet";
@@ -18,7 +18,6 @@ const fadeUp = {
 const cabinetGalleryImages = [heroClinic, cabinetReception, dentalTech, cabinetReception, heroClinic, dentalTech];
 const cabinetGalleryLabels = ["Salle de soins", "Accueil", "Équipements", "Réception", "Cabinet", "Technologie"];
 
-const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby };
 
 /* ============ HERO ============ */
 const HeroSection = () => (
@@ -197,7 +196,6 @@ const SoinsSection = () => {
             className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {SOINS.map((soin, i) => {
-              const Icon = soinIcons[soin.icon] || Sparkles;
 
               return (
                 <div
@@ -215,8 +213,8 @@ const SoinsSection = () => {
                     custom={0}
                     className="glass-card p-6 flex h-full flex-col overflow-hidden"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
-                      <Icon size={22} className="text-accent" />
+                    <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
+                      <img src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                     </div>
                     <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
@@ -252,7 +250,6 @@ const SoinsSection = () => {
 
         <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {SOINS.map((soin, i) => {
-            const Icon = soinIcons[soin.icon] || Sparkles;
 
             return (
               <motion.div
@@ -264,8 +261,8 @@ const SoinsSection = () => {
                 custom={i * 0.5}
                 className="glass-card p-6 flex flex-col"
               >
-                <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
-                  <Icon size={22} className="text-accent" />
+                <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
+                  <img src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 </div>
                 <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
@@ -373,7 +370,7 @@ const TechSection = () => {
             const Icon = techIcons[i] || Cpu;
             return (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5} className="glass-card p-6">
-                <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
+                <div className="w-16 h-16 rounded-xl bg-mint-light flex items-center justify-center mb-4">
                   <Icon size={22} className="text-accent" />
                 </div>
                 <h3 className="font-serif font-bold text-lg mb-2">{tech.title}</h3>

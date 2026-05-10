@@ -57,19 +57,18 @@ const Cabinet = () => {
             <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos engagements</span>
             <h2 className="section-title mt-2 mb-4">Ce qui nous anime</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: FilePenLine, title: "Soins accessibles pour tous", desc: "Ouverts à tous, nous pratiquons des honoraires conventionnés et des modalités de paiement adaptées." },
-              { icon: Heart, title: "Bienveillance", desc: "Une approche humaine et rassurante, à l'écoute de vos besoins et appréhensions." },
-              { icon: ShieldCheck, title: "Hygiène stricte", desc: "Protocoles de stérilisation rigoureux et traçabilité complète des instruments." },
-              { icon: Sparkles, title: "Excellence", desc: "Des soins de haute qualité grâce à une formation continue et des équipements modernes." },
-              { icon: Users, title: "Transparence", desc: "Devis clairs et explications détaillées avant chaque traitement." },
+              { icon: FilePenLine, title: "Accessibilité", desc: "Des soins conventionnés et des solutions adaptées à chaque patient." },
+              { icon: Heart, title: "Bienveillance", desc: "Une pris en charge attentive, humaine et rassurante." },
+              { icon: ShieldCheck, title: "Hygiène & Sécurité", desc: "Protocoles rigoureux de stérilisation et traçabilité numérique des instruments." },
+              { icon: Users, title: "Transparence", desc: "Des explications claires et des devis détaillés avant chaque traitement." },
             ].map((v, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="glass-card p-6 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-mint-light flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-mint-light flex items-center justify-center mx-auto mb-4">
                   <v.icon size={26} className="text-accent" />
                 </div>
-                <h3 className="font-serif font-bold text-lg mb-2">{v.title}</h3>
+                <h3 className="font-[Cormorant] font-bold text-lg mb-2">{v.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}

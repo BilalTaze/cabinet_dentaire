@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, Shield, Heart, ArrowRight, Sparkles, Crown, Wrench, Star, AlertCircle, Baby, ShieldCheck, Radio, Stethoscope } from "lucide-react";
+import { Calendar, Clock, Shield, Heart, ArrowRight, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG, SOINS } from "@/config/cabinet";
 import { useState, useRef, useEffect } from "react";
@@ -10,7 +10,6 @@ const fadeUp = {
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
 
-const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, AlertCircle, Baby, ShieldCheck, Radio, Stethoscope };
 
 const Soins = () => {
   const [activeSoin, setActiveSoin] = useState<string | null>(null);
@@ -46,7 +45,6 @@ const Soins = () => {
         <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
             {SOINS.map((soin, i) => {
-              const Icon = soinIcons[soin.icon] || Sparkles;
               return (
                 <motion.button
                   key={soin.id}
@@ -58,8 +56,8 @@ const Soins = () => {
                   onClick={() => setActiveSoin(activeSoin === soin.id ? null : soin.id)}
                   className={`glass-card p-6 text-left transition-all ${activeSoin === soin.id ? "ring-2 ring-accent" : ""}`}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-mint-light flex items-center justify-center mb-4">
-                    <Icon size={22} className="text-accent" />
+                  <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
+                    <img src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{soin.shortDesc}</p>
