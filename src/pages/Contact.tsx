@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG } from "@/config/cabinet";
 import { useState, useCallback } from "react";
 import { Star } from "lucide-react";
-import heroImg from "@/assets/hero-clinic.jpg";
+import PageHero from "@/components/layout/PageHero";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -61,18 +61,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="Contact" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
-          <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        </div>
-        <div className="container relative z-10">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Contact</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-            Nous sommes à votre écoute. Contactez-nous par téléphone, email ou via le formulaire.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero label="Contact" title="Contact" subtitle="Nous sommes à votre écoute. Contactez-nous par téléphone, email ou via le formulaire." />
 
       <section className="section-padding bg-background">
         <div className="container">

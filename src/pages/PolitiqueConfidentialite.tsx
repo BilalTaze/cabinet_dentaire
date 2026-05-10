@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CABINET_CONFIG } from "@/config/cabinet";
-import heroImg from "@/assets/hero-clinic.jpg";
+import PageHero from "@/components/layout/PageHero";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,20 +16,7 @@ const Section = ({ title, children, i }: { title: string; children: React.ReactN
 
 const PolitiqueConfidentialite = () => (
   <>
-    <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
-      <div className="absolute inset-0">
-        <img src={heroImg} alt="Politique de confidentialité" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-      </div>
-      <div className="container relative z-10">
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">
-          Politique de confidentialité
-        </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-          Comment nous collectons, utilisons et protégeons vos données personnelles.
-        </motion.p>
-      </div>
-    </section>
+    <PageHero label="Légal" title="Politique de confidentialité" subtitle="Comment nous collectons, utilisons et protégeons vos données personnelles." />
 
     <section className="section-padding bg-background">
       <div className="container max-w-3xl">

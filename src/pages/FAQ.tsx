@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FAQ_ITEMS } from "@/config/cabinet";
-import heroImg from "@/assets/hero-clinic.jpg";
+import PageHero from "@/components/layout/PageHero";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -12,18 +12,7 @@ const fadeUp = {
 const FAQ = () => (
   <>
     {/* Hero section */}
-    <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
-      <div className="absolute inset-0">
-        <img src={heroImg} alt="Questions fréquentes" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-      </div>
-      <div className="container relative z-10">
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Questions fréquentes</motion.h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-          Retrouvez les réponses aux questions les plus fréquemment posées sur nos services, tarifs et modalités pratiques.
-        </motion.p>
-      </div>
-    </section>
+    <PageHero label="FAQ" title="Questions fréquentes" subtitle="Retrouvez les réponses aux questions les plus fréquemment posées sur nos services, tarifs et modalités pratiques." />
 
     {/* FAQ Section */}
     <section className="section-padding bg-background">

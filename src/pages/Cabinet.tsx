@@ -3,10 +3,8 @@ import { ShieldCheck, Heart, Users, FilePenLine, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG } from "@/config/cabinet";
 import { Calendar } from "lucide-react";
-import { useState } from "react";
-import cabinetReception from "@/assets/cabinet-reception.jpg";
 import heroClinic from "@/assets/hero-clinic.jpg";
-import dentalTech from "@/assets/dental-tech.jpg";
+import PageHero from "@/components/layout/PageHero";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 } as const,
@@ -17,19 +15,7 @@ const Cabinet = () => {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
-        <div className="absolute inset-0">
-          <img src={cabinetReception} alt="Le Centre" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
-          <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        </div>
-        <div className="container relative z-10">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Le Centre</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-            Un espace dédié à votre santé bucco-dentaire à Strasbourg
-          </motion.p>
-        </div>
-      </section>
+      <PageHero label="Le centre" title="Le Centre" subtitle="Un espace dédié à votre santé bucco-dentaire à Strasbourg" />
 
       {/* Présentation */}
       <section className="section-padding bg-background">

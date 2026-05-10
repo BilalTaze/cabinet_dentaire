@@ -3,7 +3,7 @@ import { Calendar, Clock, Shield, Heart, ArrowRight, AlertCircle } from "lucide-
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG, SOINS } from "@/config/cabinet";
 import { useState, useRef, useEffect } from "react";
-import heroImg from "@/assets/hero-clinic.jpg";
+import PageHero from "@/components/layout/PageHero";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -27,18 +27,7 @@ const Soins = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[32vh] md:h-[36vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="Nos services" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" />
-          <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        </div>
-        <div className="container relative z-10">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Nos Services</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-            Prévention, soins et suivi dentaire.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero label="Nos services" title="Nos Services" subtitle="Prévention, soins et suivi dentaire." />
 
       {/* Soins grid */}
       <section className="section-padding bg-background">
