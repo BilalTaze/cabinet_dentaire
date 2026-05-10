@@ -4,9 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, REVIEWS, FAQ_ITEMS, TECHNOLOGIES } from "@/config/cabinet";
 import heroImg from "@/assets/hero-clinic.jpg";
-import cabinetReception from "@/assets/cabinet-reception.jpg";
-import heroClinic from "@/assets/hero-clinic.jpg";
-import dentalTech from "@/assets/dental-tech.jpg";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -15,7 +12,6 @@ const fadeUp = {
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
 
-const cabinetGalleryImages = [heroClinic, cabinetReception, dentalTech, cabinetReception, heroClinic, dentalTech];
 const cabinetGalleryLabels = ["Salle de soins", "Accueil", "Équipements", "Réception", "Cabinet", "Technologie"];
 
 
@@ -82,11 +78,11 @@ const TrustBanner = () => {
 const CabinetPresentation = () => {
   const [activeCabinetImg, setActiveCabinetImg] = useState(0);
 
-  const prevCabinetImg = () => setActiveCabinetImg(i => (i - 1 + cabinetGalleryImages.length) % cabinetGalleryImages.length);
-  const nextCabinetImg = () => setActiveCabinetImg(i => (i + 1) % cabinetGalleryImages.length);
+  const prevCabinetImg = () => setActiveCabinetImg(i => (i - 1 + cabinetGalleryLabels.length) % cabinetGalleryLabels.length);
+  const nextCabinetImg = () => setActiveCabinetImg(i => (i + 1) % cabinetGalleryLabels.length);
 
   return (
-    <section className="section-padding bg-background">
+    <section className="py-10 md:py-20 bg-background">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -105,13 +101,9 @@ const CabinetPresentation = () => {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="space-y-3 max-w-lg mx-auto md:max-w-none w-full">
             <div className="relative rounded-2xl overflow-hidden aspect-[7/5] md:max-w-[560px] w-full mx-auto" style={{ boxShadow: "var(--shadow-card)" }}>
-              <img
-                src={cabinetGalleryImages[activeCabinetImg]}
-                alt={cabinetGalleryLabels[activeCabinetImg]}
-                className="w-full h-full object-cover transition-all duration-500"
-                loading="lazy"
-                decoding="async"
-              />
+              <div className="w-full h-full bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center transition-all duration-500">
+                <span className="font-serif font-bold text-5xl text-accent/20 select-none">{cabinetGalleryLabels[activeCabinetImg]}</span>
+              </div>
               <button
                 onClick={prevCabinetImg}
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors"
@@ -127,17 +119,19 @@ const CabinetPresentation = () => {
                 <ChevronRightIcon size={20} />
               </button>
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-card/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
-                {cabinetGalleryLabels[activeCabinetImg]} — {activeCabinetImg + 1}/{cabinetGalleryImages.length}
+                {cabinetGalleryLabels[activeCabinetImg]} — {activeCabinetImg + 1}/{cabinetGalleryLabels.length}
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2 md:max-w-[300px] mx-auto w-full">
-              {cabinetGalleryImages.map((img, i) => (
+              {cabinetGalleryLabels.map((label, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveCabinetImg(i)}
                   className={`rounded-xl overflow-hidden aspect-square transition-all ${activeCabinetImg === i ? "ring-2 ring-accent scale-[0.97]" : "opacity-70 hover:opacity-100"}`}
                 >
-                  <img src={img} alt={cabinetGalleryLabels[i]} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                  <div className="w-full h-full bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center">
+                    <span className="font-serif text-accent/30 text-xs font-bold text-center px-1 select-none">{label}</span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -180,7 +174,7 @@ const SoinsSection = () => {
   const activeSoin = SOINS[activeSoinIndex];
 
   return (
-    <section className="section-padding bg-ivory">
+    <section className="py-10 md:py-14 bg-ivory">
       <div className="container">
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos services</span>
@@ -346,7 +340,7 @@ const TeamSection = () => {
   );
 
   return (
-    <section className="section-padding bg-ivory">
+    <section className="py-10 md:py-14 bg-ivory">
       <div className="container">
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Notre équipe</span>
@@ -363,23 +357,6 @@ const TeamSection = () => {
             {secondRow.map((m, i) => <MemberCard key={m.id} member={m} i={i + 4} />)}
           </div>
         )}
-
-        <div className="mt-10 bg-card rounded-2xl border border-border flex flex-col md:flex-row items-center">
-          <div className="flex items-center gap-5 px-8 py-6 flex-1">
-            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" className="shrink-0 text-accent/50" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 4C13.5 4 9 8.5 9 13.5c0 3.2 1.2 5.5 2.2 7.5 1.5 3 2.8 11 5.3 11 1.5 0 2-3 2.5-6 .3-1.5.7-2 2-2s1.7.5 2 2c.5 3 1 6 2.5 6 2.5 0 3.8-8 5.3-11 1-2 2.2-4.3 2.2-7.5C33 8.5 28.5 4 19 4z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
-            </svg>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Une équipe complémentaire, unie par les mêmes valeurs : écoute, exigence, bienveillance et excellence.
-            </p>
-          </div>
-          <div className="w-full md:w-px h-px md:h-14 bg-border shrink-0" />
-          <div className="px-8 py-6 shrink-0">
-            <Link to="/equipe" className="text-accent font-medium inline-flex items-center gap-2 hover:gap-3 transition-all text-sm whitespace-nowrap">
-              Découvrez notre approche <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -389,7 +366,7 @@ const TeamSection = () => {
 const TechSection = () => {
   const techIcons = [Radio, Camera, ScanLine, Box, ShieldCheck, Cpu];
   return (
-    <section className="section-padding bg-background">
+    <section className="py-10 md:py-14 bg-background">
       <div className="container">
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos technologies</span>
@@ -565,7 +542,7 @@ const TechSection = () => {
 
 /* ============ LOCATION ============ */
 const LocationSection = () => (
-  <section className="section-padding bg-ivory">
+  <section className="py-10 md:py-14 bg-ivory">
     <div className="container">
       <div className="grid md:grid-cols-2 gap-12">
         <div>

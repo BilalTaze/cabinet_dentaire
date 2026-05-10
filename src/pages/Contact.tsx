@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Calendar, AlertCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Calendar, AlertCircle, Navigation as NavigationIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG } from "@/config/cabinet";
 import { useState, useCallback } from "react";
@@ -117,11 +117,14 @@ const Contact = () => {
                   href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CABINET_CONFIG.address + " " + CABINET_CONFIG.city)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-accent font-medium text-sm hover:underline"
-                >
-                  <MapPin size={16} />
-                  Itinéraire Google Maps
-                </a>
+                  className="inline-flex items-center gap-3 border border-accent/40 text-accent font-medium text-sm rounded-xl px-4 py-3 hover:bg-mint-light transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <NavigationIcon size={16} />
+                Voir l'itinéraire
+              </span>
+              <ExternalLink size={15} className="shrink-0" />
+            </a>
               </motion.div>
 
               <motion.div variants={fadeUp} custom={2} className="rounded-2xl overflow-hidden h-64" style={{ boxShadow: "var(--shadow-card)" }}>

@@ -3,7 +3,6 @@ import { ShieldCheck, Heart, Users, FilePenLine, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG } from "@/config/cabinet";
 import { Calendar } from "lucide-react";
-import heroClinic from "@/assets/hero-clinic.jpg";
 import PageHero from "@/components/layout/PageHero";
 
 const fadeUp = {
@@ -71,24 +70,22 @@ const Cabinet = () => {
               </motion.div>
             </motion.div>
 
-            <motion.img
+            <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              src={heroClinic}
-              alt="Intérieur du cabinet"
-              className="rounded-3xl w-full object-cover aspect-[4/5] hidden md:block"
+              className="rounded-3xl w-full aspect-[4/5] hidden md:flex items-center justify-center bg-gradient-to-b from-mint-light/50 to-mint-light"
               style={{ boxShadow: "var(--shadow-card)" }}
-              loading="lazy"
-              decoding="async"
-            />
+            >
+              <span className="font-serif font-bold text-[6rem] leading-none text-accent/15 select-none">MD</span>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Valeurs */}
-      <section className="section-padding bg-ivory">
+      <section className="py-10 md:py-14 bg-ivory">
         <div className="container">
           <div className="text-center mb-12">
             <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos engagements</span>
@@ -114,10 +111,10 @@ const Cabinet = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-16 bg-primary text-center">
+      <section className="py-10 md:py-12 bg-primary text-center">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-foreground mb-4">Prêt à nous rendre visite ?</h2>
-          <p className="text-primary-foreground/70 mb-8 max-w-lg mx-auto">Prenez rendez-vous en ligne et découvrez notre cabinet en personne.</p>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-foreground mb-4">Besoin d’un rendez-vous ?</h2>
+          <p className="text-primary-foreground/70 mb-8 max-w-lg mx-auto">Prenez rendez-vous en ligne pour une consultation</p>
           <Button size="lg" className="bg-accent hover:bg-mint-dark text-accent-foreground" style={{ boxShadow: "var(--shadow-button)" }} asChild>
             <a href={CABINET_CONFIG.doctolibProfileUrl} target="_blank" rel="noopener noreferrer">
               <Calendar size={20} className="mr-2" />

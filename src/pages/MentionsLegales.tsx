@@ -26,13 +26,12 @@ const MentionsLegales = () => (
           <p><span className="font-medium text-foreground">Adresse :</span> {CABINET_CONFIG.address}, {CABINET_CONFIG.zip} {CABINET_CONFIG.city}</p>
           <p><span className="font-medium text-foreground">Téléphone :</span> {CABINET_CONFIG.phone}</p>
           <p><span className="font-medium text-foreground">Email :</span> {CABINET_CONFIG.email}</p>
-          <p><span className="font-medium text-foreground">Numéro RPPS :</span> À compléter</p>
-          <p><span className="font-medium text-foreground">Numéro SIRET :</span> À compléter</p>
+          <p><span className="font-medium text-foreground">Numéro SIRET :</span> 938 860 038 00026</p>
           <p><span className="font-medium text-foreground">Ordre professionnel :</span> Ordre des Chirurgiens-Dentistes du Bas-Rhin</p>
         </Section>
 
         <Section title="2. Directeur de la publication" i={1}>
-          <p>Le directeur de la publication est le responsable du cabinet {CABINET_CONFIG.name}.</p>
+          <p>Le directeur de la publication est le responsable du centre {CABINET_CONFIG.name}.</p>
           <p>Pour toute question : <a href={`mailto:${CABINET_CONFIG.email}`} className="text-accent underline">{CABINET_CONFIG.email}</a></p>
         </Section>
 

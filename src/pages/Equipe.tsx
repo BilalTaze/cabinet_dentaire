@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Award, Heart } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG, TEAM_MEMBERS } from "@/config/cabinet";
 import { useEffect } from "react";
@@ -50,24 +50,14 @@ const Equipe = () => {
               </motion.div>
               <motion.div variants={fadeUp} custom={1}>
                 <h2 className="font-serif font-bold text-3xl mb-1">{member.name}</h2>
-                <p className="text-accent font-medium mb-1">{member.title}</p>
-
-                <div className="mb-6 mt-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Award size={18} className="text-accent" />
-                    <h3 className="font-[Cormorant] font-bold">Diplômes & formations</h3>
-                  </div>
-                  <ul className="space-y-1.5 text-sm text-muted-foreground">
-                    {member.diplomas.map((d, j) => (
-                      <li key={j} className="flex items-start gap-2"><span className="text-accent mt-1">•</span>{d}</li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-muted-foreground text-sm mt-2 mb-6">
+                  {member.title} {member.bio.charAt(0).toLowerCase() + member.bio.slice(1)}
+                </p>
 
                 <Button className="bg-accent hover:bg-mint-dark text-accent-foreground" style={{ boxShadow: "var(--shadow-button)" }} asChild>
                   <a href={CABINET_CONFIG.doctolibProfileUrl} target="_blank" rel="noopener noreferrer">
                     <Calendar size={18} className="mr-2" />
-                    Prendre RDV avec {member.name.split(" ")[0]}
+                    Prendre RDV
                   </a>
                 </Button>
               </motion.div>

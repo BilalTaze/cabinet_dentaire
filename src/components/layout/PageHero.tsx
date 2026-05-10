@@ -7,8 +7,8 @@ interface PageHeroProps {
 }
 
 const PageHero = ({ label, title, subtitle }: PageHeroProps) => (
-  <section className="bg-ivory pt-[4.75rem] md:pt-[7.25rem] pb-10 md:pb-14 border-b border-border">
-    <div className="container py-10 md:py-12">
+  <section className="bg-ivory pt-[4.75rem] md:pt-[7.25rem] border-b border-border">
+    <div className="container py-8 md:py-10">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <span className="text-accent font-medium text-sm uppercase tracking-wide block mb-2">{label}</span>
         <div className="w-8 h-0.5 bg-accent mb-6" />

@@ -69,7 +69,7 @@ const PolitiqueConfidentialite = () => (
 
         <Section title="6. Destinataires des données" i={5}>
           <p>
-            Vos données sont destinées exclusivement aux membres du cabinet {CABINET_CONFIG.name}. Elles ne sont jamais vendues, louées ou transmises à des tiers à des fins commerciales.
+            Vos données sont destinées exclusivement aux membres du centre {CABINET_CONFIG.name}. Elles ne sont jamais vendues, louées ou transmises à des tiers à des fins commerciales.
           </p>
           <p>
             Certains prestataires techniques (hébergeur, outil de formulaire) peuvent y avoir accès dans le cadre de leur mission, dans le strict respect du RGPD.

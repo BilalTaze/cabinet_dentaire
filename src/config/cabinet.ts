@@ -1,7 +1,7 @@
 export const CABINET_CONFIG = {
   name: "La Maison Dentaire",
   slogan: "Votre centre de soins dentaires à Strasbourg",
-  subtitle: "Soins dentaires pour adultes et enfants à Strasbourg - Elsau. Centre conventionné, accessible en tram et en voiture.",
+  subtitle: "Soins dentaires pour adultes et enfants à Strasbourg - Elsau. Centre conventionné.",
   address: "21 Rue Léonard de Vinci",
   logo: "/logo1.webp",
   city: "Strasbourg",
@@ -38,7 +38,7 @@ export const TEAM_MEMBERS = [
     title: "Chirurgien-Dentiste",
     specialty: "Implantologie & Esthétique",
     bio: "Diplômé de la Faculté de Chirurgie-Dentaire de Strasbourg.",
-    diplomas: ["Doctorat en Chirurgie Dentaire – Université Paris Descartes"],
+    diplomas: ["Doctorat en Chirurgie Dentaire – Université de Strasbourg"],
     approach: "Une approche douce et rassurante, avec un accent sur la communication et l'explication de chaque étape du traitement.",
     image: "male",
   },
@@ -57,7 +57,7 @@ export const TEAM_MEMBERS = [
     name: "Dr. Ghita ELASSAD",
     title: "Chirurgien-Dentiste",
     specialty: "Parodontologie & Soins conservateurs",
-    bio: "Diplômé de la Faculté de Chirurgie-Dentaire de Strasbourg.",
+    bio: "Diplômée de la Faculté de Chirurgie-Dentaire de Strasbourg.",
     diplomas: ["Doctorat en Chirurgie Dentaire – Université de Strasbourg"],
     approach: "Un praticien à l'écoute, privilégiant les techniques mini-invasives et la prévention pour préserver au maximum les dents naturelles.",
     image: "male",
@@ -88,7 +88,7 @@ export const TEAM_MEMBERS = [
     title: "Chirurgien-Dentiste",
     specialty: "Parodontologie & Soins conservateurs",
     bio: "Diplômée de la Faculté de Chirurgie-Dentaire de Cracovie.",
-    diplomas: ["Doctorat en Chirurgie Dentaire – Université de Strasbourg"],
+    diplomas: ["Doctorat en Chirurgie Dentaire – Université de Cracovie"],
     approach: "Un praticien à l'écoute, privilégiant les techniques mini-invasives et la prévention pour préserver au maximum les dents naturelles.",
     image: "female",
   },
@@ -441,7 +441,7 @@ Les deux techniques professionnelles
 Réalisé en une à deux séances d'environ une heure. Le praticien applique un gel à haute concentration activé par une lampe LED ou laser. Les résultats sont immédiats et peuvent durer **1 à 3 ans** selon les habitudes.
 
 **Blanchiment à domicile (gouttières sur mesure)**
-Des gouttières thermoformées personnalisées sont fabriquées à partir d'empreintes de vos dents. Vous appliquez vous-même le gel à concentration modérée **chaque nuit pendant 10 à 14 jours**. Technique progressive, résultats durables.
+Des gouttières thermoformées personnalisées sont fabriquées à partir d'empreintes de vos dents. Vous appliquez vous-même le gel à concentration modérée **chaque nuit pendant 14 à 21 jours**. Technique progressive, résultats durables.
 
 Qui peut en bénéficier ?
 
@@ -481,7 +481,6 @@ Pour prolonger les effets :
 En résumé
 
 - Le blanchiment professionnel est **sûr et efficace** sous supervision dentaire
-- Fuyez les prestataires non dentistes qui proposent ce soin : c'est **illégal et dangereux**
 - Les résultats durent **1 à 3 ans** avec un bon entretien
 - Traitez d'abord toute pathologie dentaire avant d'envisager un blanchiment`,
     category: "Esthétique",
@@ -587,7 +586,7 @@ Elle doit avoir lieu **avant 1 an** selon les recommandations actuelles, ou au p
 - De donner des conseils personnalisés aux parents
 - D'habituer l'enfant au cabinet de façon positive et détendue
 
-Le programme M'T dents prend en charge des examens gratuits à 3, 6, 9, 12, 15, 18, 21 et 24 ans.
+Le programme M’T dents prend en charge un examen bucco-dentaire de prévention annuel chez les enfants et jeunes adultes de 3 à 24 ans.
 
 Les habitudes à éviter
 
