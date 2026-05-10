@@ -35,7 +35,7 @@ const Soins = () => {
         <div className="container relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground">Nos Services</motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-primary-foreground/80 text-lg mt-4 max-w-xl">
-            Une prise en charge complète et personnalisée pour toute la famille.
+            Prévention, soins et suivi dentaire.
           </motion.p>
         </div>
       </section>

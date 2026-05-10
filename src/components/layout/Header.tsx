@@ -20,7 +20,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="fixed top-3 left-4 right-4 z-50 rounded-2xl bg-card/70 backdrop-blur-lg border border-border/40 overflow-hidden" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.06)" }}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border" style={{ boxShadow: "var(--shadow-nav)" }}>
       {/* Top bar */}
       <div className="hidden md:block bg-primary">
         <div className="container flex items-center justify-between py-1.5 text-xs text-primary-foreground/90">

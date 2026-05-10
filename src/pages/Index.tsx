@@ -93,11 +93,10 @@ const CabinetPresentation = () => {
             <motion.span variants={fadeUp} custom={0} className="text-accent font-medium text-sm uppercase tracking-wide">  </motion.span>
             <motion.h2 variants={fadeUp} custom={1} className="section-title mt-2 mb-6">Bienvenue à La Maison Dentaire</motion.h2>
             <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed mb-4">
-              La Maison Dentaire propose une prise en charge globale de la santé bucco-dentaire : soins conservateurs, urgences dentaires, esthétique du sourire, prévention et réhabilitation implantaire. Notre équipe s’attache à proposer des soins adaptés aux besoins de chaque patient, avec une attention particulière portée au confort et à la pédagogie.
+              La Maison Dentaire propose une prise en charge complète de la santé bucco-dentaire : soins conservateurs, urgences dentaires, prévention, esthétique du sourire et réhabilitation implantaire. Notre équipe accompagne chaque patient avec une attention particulière portée au confort, à l’écoute et à la qualité des soins.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="text-muted-foreground leading-relaxed mb-6">
-              Doté d’un plateau technique moderne et d’équipements de dernière génération, notre centre met tout en œuvre afin d’assurer précision, sécurité et qualité des soins. Nous prenons le temps d’écouter, d’expliquer et d’accompagner chaque patient à chaque étape de son parcours de soins.
-            </motion.p>
+              Pensé pour le confort des patients et l’organisation des soins, le centre dispose de plusieurs salles de soins, d’un espace d’accueil moderne et d’équipements numériques dédiés au diagnostic et aux traitements, afin d’assurer des soins précis et adaptés à chacun.            </motion.p>
             <motion.div variants={fadeUp} custom={4}>
               <Button variant="outline" className="border-accent text-accent hover:bg-mint-light" asChild>
                 <Link to="/cabinet">Découvrir le centre <ChevronRight size={16} className="ml-1" /></Link>
@@ -186,7 +185,7 @@ const SoinsSection = () => {
         <div className="text-center mb-12">
           <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos services</span>
           <h2 className="section-title mt-2 mb-4">Des soins adaptés à chaque besoin</h2>
-          <p className="section-subtitle mx-auto">Une prise en charge complète, de la prévention aux traitements les plus avancés.</p>
+          <p className="section-subtitle mx-auto">Prévention, soins et suivi dentaire.</p>
         </div>
 
         <div className="md:hidden">
@@ -278,81 +277,113 @@ const SoinsSection = () => {
   );
 };
 
-/* ============ FIRST VISIT ============ */
-const FirstVisitSection = () => {
-  const steps = [
-    { img: "/etape1.jpeg", title: "Accueil & échange", desc: "Un premier échange afin de comprendre vos besoins et le motif de votre consultation." },
-    { img: "/etape2.jpeg", title: "Examen clinique", desc: "Un examen bucco-dentaire complet pour évaluer votre santé orale." },
-    { img: "/etape3.jpeg", title: "Radiographie numérique", desc: "Des examens radiographiques peuvent être réalisés afin de compléter le diagnostic." },
-    { img: "/etape4.jpeg", title: "Plan de traitement", desc: "Votre plan de traitement vous est expliqué clairement et personnalisé selon vos besoins." },
-  ];
+// /* ============ FIRST VISIT ============ */
+// const FirstVisitSection = () => {
+//   const steps = [
+//     { img: "/etape1.jpeg", title: "Accueil & échange", desc: "Un premier échange afin de comprendre vos besoins et le motif de votre consultation." },
+//     { img: "/etape2.jpeg", title: "Examen clinique", desc: "Un examen bucco-dentaire complet pour évaluer votre santé orale." },
+//     { img: "/etape3.jpeg", title: "Radiographie numérique", desc: "Des examens radiographiques peuvent être réalisés afin de compléter le diagnostic." },
+//     { img: "/etape4.jpeg", title: "Plan de traitement", desc: "Votre plan de traitement vous est expliqué clairement et personnalisé selon vos besoins." },
+//   ];
+//   return (
+//     <section className="section-padding bg-background">
+//       <div className="container">
+//         <div className="text-center mb-12">
+//           <span className="text-accent font-medium text-sm uppercase tracking-wide">Première visite</span>
+//           <h2 className="section-title mt-2 mb-4">Comment se passe votre première consultation ?</h2>
+//           <p className="section-subtitle mx-auto">Pas de stress ! Voici les étapes d'une première visite dans notre cabinet.</p>
+//         </div>
+//         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+//           {steps.map((step, i) => (
+//             <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="text-center p-6">
+//               <div className="w-30 h-30 rounded-2xl overflow-hidden mx-auto mb-4">
+//                 <img src={step.img} alt={step.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+//               </div>
+//               <div className="text-accent font-bold text-sm mb-2">Étape {i + 1}</div>
+//               <h3 className="font-[Cormorant] font-bold text-lg mb-2">{step.title}</h3>
+//               <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+//             </motion.div>
+//           ))}
+//         </div>
+//         <div className="text-center mt-8">
+//           <Button className="bg-accent hover:bg-mint-dark text-accent-foreground" style={{ boxShadow: "var(--shadow-button)" }} asChild>
+//             <a href={CABINET_CONFIG.doctolibProfileUrl} target="_blank" rel="noopener noreferrer">
+//               <Calendar size={18} className="mr-2" />
+//               Prendre rendez-vous
+//             </a>
+//           </Button>
+//         </div>
+//       </div>
+//     </section>
+//   );  
+// };
+
+/* ============ TEAM ============ */
+const TeamSection = () => {
+  const firstRow = TEAM_MEMBERS.slice(0, 4);
+  const secondRow = TEAM_MEMBERS.slice(4);
+
+  const MemberCard = ({ member, i }: { member: typeof TEAM_MEMBERS[0]; i: number }) => (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeUp}
+      custom={i}
+      className="bg-card rounded-2xl overflow-hidden"
+      style={{ boxShadow: "var(--shadow-card)" }}
+    >
+      <div className="h-56 bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center">
+        <span className="font-serif font-bold text-[5rem] leading-none text-accent/20 select-none">
+          {member.name.replace(/Dr\.\s*/, "").charAt(0)}
+        </span>
+      </div>
+      <div className="px-5 py-4 text-center">
+        <h3 className="font-serif font-bold text-base text-foreground">{member.name}</h3>
+        <p className="text-accent text-sm font-medium mt-0.5">{member.title}</p>
+      </div>
+    </motion.div>
+  );
+
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-ivory">
       <div className="container">
         <div className="text-center mb-12">
-          <span className="text-accent font-medium text-sm uppercase tracking-wide">Première visite</span>
-          <h2 className="section-title mt-2 mb-4">Comment se passe votre première consultation ?</h2>
-          <p className="section-subtitle mx-auto">Pas de stress ! Voici les étapes d'une première visite dans notre cabinet.</p>
+          <span className="text-accent font-medium text-sm uppercase tracking-wide">Notre équipe</span>
+          <h2 className="section-title mt-2 mb-4">Des praticiens à votre écoute</h2>
+          <p className="section-subtitle mx-auto">Une équipe attentive pour vous accompagner au quotidien.</p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {steps.map((step, i) => (
-            <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="text-center p-6">
-              <div className="w-30 h-30 rounded-2xl overflow-hidden mx-auto mb-4">
-                <img src={step.img} alt={step.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-              </div>
-              <div className="text-accent font-bold text-sm mb-2">Étape {i + 1}</div>
-              <h3 className="font-[Cormorant] font-bold text-lg mb-2">{step.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
-            </motion.div>
-          ))}
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {firstRow.map((m, i) => <MemberCard key={m.id} member={m} i={i} />)}
         </div>
-        <div className="text-center mt-8">
-          <Button className="bg-accent hover:bg-mint-dark text-accent-foreground" style={{ boxShadow: "var(--shadow-button)" }} asChild>
-            <a href={CABINET_CONFIG.doctolibProfileUrl} target="_blank" rel="noopener noreferrer">
-              <Calendar size={18} className="mr-2" />
-              Prendre rendez-vous
-            </a>
-          </Button>
+
+        {secondRow.length > 0 && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
+            {secondRow.map((m, i) => <MemberCard key={m.id} member={m} i={i + 4} />)}
+          </div>
+        )}
+
+        <div className="mt-10 bg-card rounded-2xl border border-border flex flex-col md:flex-row items-center">
+          <div className="flex items-center gap-5 px-8 py-6 flex-1">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" className="shrink-0 text-accent/50" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 4C13.5 4 9 8.5 9 13.5c0 3.2 1.2 5.5 2.2 7.5 1.5 3 2.8 11 5.3 11 1.5 0 2-3 2.5-6 .3-1.5.7-2 2-2s1.7.5 2 2c.5 3 1 6 2.5 6 2.5 0 3.8-8 5.3-11 1-2 2.2-4.3 2.2-7.5C33 8.5 28.5 4 19 4z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+            </svg>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Une équipe complémentaire, unie par les mêmes valeurs : écoute, exigence, bienveillance et excellence.
+            </p>
+          </div>
+          <div className="w-full md:w-px h-px md:h-14 bg-border shrink-0" />
+          <div className="px-8 py-6 shrink-0">
+            <Link to="/equipe" className="text-accent font-medium inline-flex items-center gap-2 hover:gap-3 transition-all text-sm whitespace-nowrap">
+              Découvrez notre approche <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
-  );  
+  );
 };
-
-/* ============ TEAM ============ */
-const TeamSection = () => (
-  <section className="section-padding bg-ivory">
-    <div className="container">
-      <div className="text-center mb-12">
-        <span className="text-accent font-medium text-sm uppercase tracking-wide">Notre équipe</span>
-        <h2 className="section-title mt-2 mb-4">Des praticiens à votre écoute</h2>
-        <p className="section-subtitle mx-auto">Une équipe expérimentée, bienveillante et engagée pour votre santé bucco-dentaire.</p>
-      </div>
-      <div className="grid md:grid-cols-4 gap-5 max-w-7xl mx-auto">
-        {TEAM_MEMBERS.map((member, i) => (
-          <motion.div key={member.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="glass-card overflow-hidden">
-            <div className="w-full h-80 bg-mint-light flex items-center justify-center">
-              <motion.span
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="text-accent/40 text-6xl font-serif font-bold"
-              >
-                {member.name.charAt(0)}
-              </motion.span>
-            </div>
-            <div className="p-6">
-              <h3 className="font-serif font-bold text-xl">{member.name}</h3>
-              <p className="text-accent font-medium text-sm mb-2">{member.bio}</p>
-              <Link to={`/equipe#${member.id}`} className="mt-3 text-accent text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Voir le profil <ArrowRight size={14} />
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
 
 /* ============ TECHNOLOGIES ============ */
 const TechSection = () => {
@@ -385,28 +416,28 @@ const TechSection = () => {
   );
 };
 
-/* ============ BRANDS ============ */
-const BrandsSection = () => {
-  const brands = [
-    { name: "KaVo", logo: "/kavo.png" },
-    { name: "Dexis", logo: "/dexis.png" },
-    { name: "Melag", logo: "/melag.png" },
-  ];
-  return (
-    <section className="bg-background pb-16">
-      <div className="container">
-        <p className="text-center text-muted-foreground text-sm uppercase tracking-wide font-medium mb-8">Technologies utilisées</p>
-        <div className="flex flex-wrap items-center justify-center gap-12">
-          {brands.map((brand) => (
-            <motion.div key={brand.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex items-center justify-center">
-              <img src={brand.logo} alt={brand.name} className="h-12 w-auto object-contain" loading="lazy" decoding="async" />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+// /* ============ BRANDS ============ */
+// const BrandsSection = () => {
+//   const brands = [
+//     { name: "KaVo", logo: "/kavo.png" },
+//     { name: "Dexis", logo: "/dexis.png" },
+//     { name: "Melag", logo: "/melag.png" },
+//   ];
+//   return (
+//     <section className="bg-background pb-16">
+//       <div className="container">
+//         <p className="text-center text-muted-foreground text-sm uppercase tracking-wide font-medium mb-8">Technologies utilisées</p>
+//         <div className="flex flex-wrap items-center justify-center gap-12">
+//           {brands.map((brand) => (
+//             <motion.div key={brand.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex items-center justify-center">
+//               <img src={brand.logo} alt={brand.name} className="h-12 w-auto object-contain" loading="lazy" decoding="async" />
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 // /* ============ BEFORE / AFTER ============ */
 // const beforeAfterCases = [
@@ -547,8 +578,10 @@ const LocationSection = () => (
                 <p className="font-medium">{CABINET_CONFIG.address}</p>
                 <p className="text-muted-foreground text-sm">{CABINET_CONFIG.zip} {CABINET_CONFIG.city}</p>
                 <div className="flex items-center gap-1.5 mt-1.5 text-muted-foreground text-sm">
-                  <Train size={14} className="text-accent shrink-0" />
-                  <span>Face à l'arrêt de tram Elsau</span>
+                  <div className="flex items-center gap-1.5 bg-mint-light rounded-full px-3 py-1">
+                    <Train size={14} className="text-accent shrink-0" />
+                    <span>Face à l'arrêt de tram Elsau</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -611,11 +644,11 @@ const Index = () => (
     <TrustBanner />
     <CabinetPresentation />
     <SoinsSection />
-    <FirstVisitSection />
+    {/* <FirstVisitSection /> */}
     <TeamSection />
     {/* <BeforeAfterSection /> */}
     <TechSection />
-    <BrandsSection />
+    {/* <BrandsSection /> */}
     {/* <ReviewsSection /> */}
     <LocationSection />
   </>

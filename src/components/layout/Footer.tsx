@@ -9,10 +9,10 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="mb-4">
-            <img 
-              src="/logo_fond.webp" 
-              alt="Logo" 
-              className="h-14 w-auto object-contain"
+            <img
+              src="/logo_footer.png"
+              alt="Logo"
+              className="h-20 w-auto object-contain"
             />
           </div>
           <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
