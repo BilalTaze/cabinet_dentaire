@@ -11,7 +11,7 @@ const fadeUp = {
 
 const Blog = () => (
   <>
-    <PageHero label="Conseils & Prévention" title="Conseils dentaires" subtitle="Des informations simples pour mieux comprendre et préserver votre santé bucco-dentaire." />
+    <PageHero label="Conseils & Prévention" title="Conseils Dentaires" subtitle="Des informations simples pour mieux comprendre et préserver votre santé bucco-dentaire." />
 
     <section className="section-padding bg-background">
       <div className="container">

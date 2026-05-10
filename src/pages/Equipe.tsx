@@ -27,7 +27,7 @@ const Equipe = () => {
 
   return (
   <>
-    <PageHero label="Notre équipe" title="Notre Équipe" subtitle="Des praticiens passionnés et dévoués à votre bien-être." />
+    <PageHero label="Notre équipe" title="Notre Équipe" subtitle="Une équipe de praticiens à votre écoute" />
 
     <section className="section-padding bg-background">
       <div className="container">

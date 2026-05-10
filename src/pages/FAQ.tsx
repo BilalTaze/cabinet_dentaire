@@ -12,7 +12,7 @@ const fadeUp = {
 const FAQ = () => (
   <>
     {/* Hero section */}
-    <PageHero label="FAQ" title="Questions fréquentes" subtitle="Retrouvez les réponses aux questions les plus fréquemment posées sur nos services, tarifs et modalités pratiques." />
+    <PageHero label="FAQ" title="Questions Fréquentes" subtitle="Retrouvez les réponses aux questions les plus fréquemment posées sur nos services, tarifs et modalités pratiques." />
 
     {/* FAQ Section */}
     <section className="section-padding bg-background">

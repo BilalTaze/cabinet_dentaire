@@ -14,7 +14,7 @@ const Cabinet = () => {
 
   return (
     <>
-      <PageHero label="Le centre" title="Le Centre" subtitle="Un espace dédié à votre santé bucco-dentaire à Strasbourg" />
+      <PageHero label="Le centre" title="La Maison Dentaire" subtitle="Un espace dédié à votre santé bucco-dentaire à Strasbourg" />
 
       {/* Présentation */}
       <section className="section-padding bg-background">
