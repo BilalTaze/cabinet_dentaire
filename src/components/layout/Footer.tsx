@@ -18,11 +18,6 @@ const Footer = () => (
           <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
             Centre de santé dentaire Strasbourg
           </p>
-          <div className="flex gap-3">
-            <a href={CABINET_CONFIG.socialLinks.facebook} className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors" aria-label="Facebook"><Facebook size={16} /></a>
-            <a href={CABINET_CONFIG.socialLinks.instagram} className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors" aria-label="Instagram"><Instagram size={16} /></a>
-            <a href={CABINET_CONFIG.socialLinks.linkedin} className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors" aria-label="LinkedIn"><Linkedin size={16} /></a>
-          </div>
         </div>
 
         {/* Navigation */}
