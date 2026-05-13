@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Calendar, AlertCircle, Navigation as NavigationIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CABINET_CONFIG } from "@/config/cabinet";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Star } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
 

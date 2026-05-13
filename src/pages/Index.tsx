@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar, Phone, AlertCircle, ChevronRight, MapPin, Clock, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, ChevronLeft, ChevronRight as ChevronRightIcon, Train, Navigation as NavigationIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, REVIEWS, FAQ_ITEMS, TECHNOLOGIES } from "@/config/cabinet";
+import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, TECHNOLOGIES } from "@/config/cabinet";
 import heroImg from "@/assets/hero-clinic.jpg";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -171,8 +170,6 @@ const SoinsSection = () => {
     setActiveSoinIndex(current => (current === nextIndex ? current : nextIndex));
   };
 
-  const activeSoin = SOINS[activeSoinIndex];
-
   return (
     <section className="py-10 md:py-14 bg-ivory">
       <div className="container">
@@ -313,31 +310,57 @@ const SoinsSection = () => {
 // };
 
 /* ============ TEAM ============ */
+const MemberCard = ({ member, i }: { member: typeof TEAM_MEMBERS[0]; i: number }) => (
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeUp}
+    custom={i}
+    whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+    className="bg-card rounded-2xl overflow-hidden group cursor-default"
+    style={{ boxShadow: "var(--shadow-card)" }}
+  >
+    <div className="relative h-56 bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center overflow-hidden">
+      <span className="font-serif font-bold text-[5rem] leading-none text-accent/20 select-none transition-all duration-300 group-hover:scale-125 group-hover:text-accent/30">
+        {member.name.replace(/Dr\.\s*/, "").charAt(0)}
+      </span>
+      <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    </div>
+    <div className="px-5 py-4 text-center">
+      <h3 className="font-serif font-bold text-base text-foreground">{member.name}</h3>
+      <p className="text-accent text-sm font-medium mt-0.5">{member.title}</p>
+    </div>
+  </motion.div>
+);
+
 const TeamSection = () => {
   const firstRow = TEAM_MEMBERS.slice(0, 4);
   const secondRow = TEAM_MEMBERS.slice(4);
 
-  const MemberCard = ({ member, i }: { member: typeof TEAM_MEMBERS[0]; i: number }) => (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={fadeUp}
-      custom={i}
-      className="bg-card rounded-2xl overflow-hidden"
-      style={{ boxShadow: "var(--shadow-card)" }}
-    >
-      <div className="h-56 bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center">
-        <span className="font-serif font-bold text-[5rem] leading-none text-accent/20 select-none">
-          {member.name.replace(/Dr\.\s*/, "").charAt(0)}
-        </span>
-      </div>
-      <div className="px-5 py-4 text-center">
-        <h3 className="font-serif font-bold text-base text-foreground">{member.name}</h3>
-        <p className="text-accent text-sm font-medium mt-0.5">{member.title}</p>
-      </div>
-    </motion.div>
-  );
+  const mobilePairs: (typeof TEAM_MEMBERS)[] = [];
+  for (let i = 0; i < TEAM_MEMBERS.length; i += 2) {
+    mobilePairs.push(TEAM_MEMBERS.slice(i, i + 2));
+  }
+
+  const [activeMobileSlide, setActiveMobileSlide] = useState(0);
+  const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
+  const mobileSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollToSlide = (index: number) => {
+    const nextIndex = (index + mobilePairs.length) % mobilePairs.length;
+    const slide = mobileSlideRefs.current[nextIndex];
+    if (!slide) return;
+    slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    setActiveMobileSlide(nextIndex);
+  };
+
+  const handleMobileScroll = () => {
+    const track = mobileCarouselRef.current;
+    if (!track) return;
+    const nextIndex = Math.round(track.scrollLeft / track.clientWidth);
+    setActiveMobileSlide(current => (current === nextIndex ? current : nextIndex));
+  };
 
   return (
     <section className="py-10 md:py-14 bg-ivory">
@@ -348,15 +371,57 @@ const TeamSection = () => {
           <p className="section-subtitle mx-auto">Une équipe attentive pour vous accompagner au quotidien.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {firstRow.map((m, i) => <MemberCard key={m.id} member={m} i={i} />)}
+        {/* Mobile : carousel 2 par 2 */}
+        <div className="md:hidden">
+          <div
+            ref={mobileCarouselRef}
+            onScroll={handleMobileScroll}
+            className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {mobilePairs.map((pair, slideIndex) => (
+              <div
+                key={slideIndex}
+                ref={el => { mobileSlideRefs.current[slideIndex] = el; }}
+                className="w-full shrink-0 snap-start grid grid-cols-2 gap-3 px-1"
+              >
+                {pair.map((member, j) => (
+                  <MemberCard key={member.id} member={member} i={slideIndex * 2 + j} />
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => scrollToSlide(activeMobileSlide - 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-colors hover:bg-secondary"
+              aria-label="Voir les praticiens précédents"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSlide(activeMobileSlide + 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-colors hover:bg-secondary"
+              aria-label="Voir les praticiens suivants"
+            >
+              <ChevronRightIcon size={18} />
+            </button>
+          </div>
         </div>
 
-        {secondRow.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
-            {secondRow.map((m, i) => <MemberCard key={m.id} member={m} i={i + 4} />)}
+        {/* Desktop : grille originale */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {firstRow.map((m, i) => <MemberCard key={m.id} member={m} i={i} />)}
           </div>
-        )}
+          {secondRow.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
+              {secondRow.map((m, i) => <MemberCard key={m.id} member={m} i={i + 4} />)}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -365,6 +430,26 @@ const TeamSection = () => {
 /* ============ TECHNOLOGIES ============ */
 const TechSection = () => {
   const techIcons = [Radio, Camera, ScanLine, Box, ShieldCheck, Cpu];
+
+  const [activeTechIndex, setActiveTechIndex] = useState(0);
+  const techCarouselRef = useRef<HTMLDivElement | null>(null);
+  const techSlideRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollToTech = (index: number) => {
+    const nextIndex = (index + TECHNOLOGIES.length) % TECHNOLOGIES.length;
+    const slide = techSlideRefs.current[nextIndex];
+    if (!slide) return;
+    slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    setActiveTechIndex(nextIndex);
+  };
+
+  const handleTechScroll = () => {
+    const track = techCarouselRef.current;
+    if (!track) return;
+    const nextIndex = Math.round(track.scrollLeft / track.clientWidth);
+    setActiveTechIndex(current => (current === nextIndex ? current : nextIndex));
+  };
+
   return (
     <section className="py-10 md:py-14 bg-background">
       <div className="container">
@@ -373,7 +458,64 @@ const TechSection = () => {
           <h2 className="section-title mt-2 mb-4">Équipements de dernière génération</h2>
           <p className="section-subtitle mx-auto">Des équipements modernes au service de la précision, du confort et de la sécurité des soins.</p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {/* Mobile : carousel 1 par 1 */}
+        <div className="md:hidden">
+          <div
+            ref={techCarouselRef}
+            onScroll={handleTechScroll}
+            className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {TECHNOLOGIES.map((tech, i) => {
+              const Icon = techIcons[i] || Cpu;
+              return (
+                <div
+                  key={i}
+                  ref={el => { techSlideRefs.current[i] = el; }}
+                  className="w-[85%] shrink-0 snap-start"
+                >
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    custom={0}
+                    className="glass-card p-6 h-full"
+                  >
+                    <div className="w-16 h-16 rounded-xl bg-mint-light flex items-center justify-center mb-4">
+                      <Icon size={22} className="text-accent" />
+                    </div>
+                    <h3 className="font-serif font-bold text-lg mb-2">{tech.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3">{tech.description}</p>
+                    <span className="text-accent text-xs font-medium bg-mint-light px-3 py-1 rounded-full">{tech.benefit}</span>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => scrollToTech(activeTechIndex - 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-colors hover:bg-secondary"
+              aria-label="Voir la technologie précédente"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToTech(activeTechIndex + 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-colors hover:bg-secondary"
+              aria-label="Voir la technologie suivante"
+            >
+              <ChevronRightIcon size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop : grille originale */}
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TECHNOLOGIES.map((tech, i) => {
             const Icon = techIcons[i] || Cpu;
             return (
