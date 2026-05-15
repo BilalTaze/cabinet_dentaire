@@ -1,9 +1,12 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { CABINET_CONFIG } from "@/config/cabinet";
-import { motion, AnimatePresence } from "framer-motion";
+'use client'
+
+import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Menu, X, Phone, Calendar } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { CABINET_CONFIG } from "@/config/cabinet"
+import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
   { label: "Accueil", path: "/" },
@@ -13,14 +16,25 @@ const navLinks = [
   { label: "Conseils", path: "/blog" },
   { label: "FAQ", path: "/faq" },
   { label: "Nous contacter", path: "/contact" },
-];
+]
 
 const Header = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+  const headerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileOpen && headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMobileOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [mobileOpen])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border" style={{ boxShadow: "var(--shadow-nav)" }}>
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border" style={{ boxShadow: "var(--shadow-nav)" }}>
       {/* Top bar */}
       <div className="hidden md:block bg-primary">
         <div className="container flex items-center justify-between py-1.5 text-xs text-primary-foreground/90">
@@ -38,7 +52,7 @@ const Header = () => {
 
       {/* Main nav */}
       <div className="container flex items-center justify-between h-16 md:h-18">
-        <Link to="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <img
             src={CABINET_CONFIG.logo}
             alt="Logo du cabinet"
@@ -51,9 +65,9 @@ const Header = () => {
           {navLinks.map(link => (
             <Link
               key={link.path}
-              to={link.path}
+              href={link.path}
               className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                location.pathname === link.path || link.path === "/contact"
+                pathname === link.path || link.path === "/contact"
                   ? "text-accent bg-mint-light"
                   : "text-muted-foreground hover:text-foreground hover:bg-secondary"
               }`}
@@ -93,10 +107,10 @@ const Header = () => {
               {navLinks.map(link => (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   onClick={() => setMobileOpen(false)}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    location.pathname === link.path || link.path === "/contact"
+                    pathname === link.path || link.path === "/contact"
                       ? "text-accent bg-mint-light"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
@@ -115,7 +129,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

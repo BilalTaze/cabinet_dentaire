@@ -1,0 +1,164 @@
+@tailwind base;
+
+/* Offset scroll for fixed navbar */
+html {
+  scroll-padding-top: 7rem;
+}
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 99%;
+    --foreground: 238 38% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 238 38% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 238 38% 14%;
+
+    --primary: 238 38% 16%;
+    --primary-foreground: 40 33% 99%;
+
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 238 38% 16%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 29 25% 51%;
+
+    --accent: 35 53% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 25% 92%;
+    --input: 214 25% 92%;
+    --ring: 35 53% 70%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 238 20% 24%;
+    --sidebar-primary: 238 38% 16%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 35 45% 92%;
+    --sidebar-accent-foreground: 238 38% 16%;
+    --sidebar-border: 29 20% 86%;
+    --sidebar-ring: 35 53% 70%;
+
+    /* Custom tokens */
+    --ivory: 40 33% 97%;
+    --navy: 238 38% 16%;
+    --navy-light: 29 25% 51%;
+    --mint: 35 53% 70%;
+    --mint-light: 35 45% 93%;
+    --mint-dark: 35 53% 62%;
+    --warm-gray: 220 10% 60%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(238 38% 12% / 0.85), hsl(29 25% 51% / 0.7));
+    --gradient-mint: linear-gradient(135deg, hsl(35 53% 70%), hsl(35 53% 62%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 25% 98%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 24px -4px hsl(238 38% 16% / 0.08);
+    --shadow-card-hover: 0 12px 40px -8px hsl(238 38% 16% / 0.15);
+    --shadow-button: 0 4px 14px -3px hsl(35 53% 70% / 0.4);
+    --shadow-nav: 0 2px 20px -2px hsl(238 38% 16% / 0.06);
+  }
+
+  .dark {
+    --background: 238 38% 9%;
+    --foreground: 210 40% 95%;
+    --card: 238 32% 13%;
+    --card-foreground: 210 40% 95%;
+    --popover: 238 32% 13%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 35 53% 70%;
+    --primary-foreground: 238 38% 9%;
+    --secondary: 238 28% 20%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 238 24% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 35 53% 70%;
+    --accent-foreground: 238 38% 9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 238 24% 19%;
+    --input: 238 24% 19%;
+    --ring: 35 53% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 py-16 md:px-8 md:py-24 lg:px-12 lg:py-32;
+  }
+
+  .section-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-[Cormorant] font-bold text-foreground;
+}
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-2xl;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full text-sm font-medium text-secondary-foreground;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-mint);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+}

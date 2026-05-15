@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Calendar, Facebook, Instagram, Linkedin, HeartPulse } from "lucide-react";
-import { CABINET_CONFIG } from "@/config/cabinet";
+import Link from "next/link"
+import { Phone, Mail, MapPin, Calendar, HeartPulse } from "lucide-react"
+import { CABINET_CONFIG } from "@/config/cabinet"
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
@@ -25,7 +25,7 @@ const Footer = () => (
           <h3 className="font-serif font-bold text-accent mb-4">Navigation</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
             {[["Accueil", "/"], ["Le Centre", "/cabinet"], ["Nos Services", "/soins"], ["L'Équipe", "/equipe"], ["Conseils", "/blog"], ["FAQ", "/faq"], ["Nous contacter", "/contact"]].map(([label, path]) => (
-              <li key={path}><Link to={path} className="hover:text-accent transition-colors">{label}</Link></li>
+              <li key={path}><Link href={path} className="hover:text-accent transition-colors">{label}</Link></li>
             ))}
           </ul>
         </div>
@@ -35,7 +35,7 @@ const Footer = () => (
           <h3 className="font-serif font-bold text-accent mb-4">Nos Services</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
             {["Parodontologie", "Soins conservateurs", "Prothèses", "Implants", "Radiologie dentaire", "Chirurgie", "Urgences dentaires", "Pédodontie"].map(s => (
-              <li key={s}><Link to="/soins" className="hover:text-accent transition-colors">{s}</Link></li>
+              <li key={s}><Link href="/soins" className="hover:text-accent transition-colors">{s}</Link></li>
             ))}
           </ul>
         </div>
@@ -58,7 +58,7 @@ const Footer = () => (
             Prendre RDV
           </a>
           <Link
-            to="/contact"
+            href="/contact"
             className="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-destructive/80 text-destructive-foreground text-sm font-medium hover:bg-destructive/100 transition-colors"
           >
             <HeartPulse size={16} />
@@ -70,12 +70,12 @@ const Footer = () => (
       <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/50">
         <p>© {new Date().getFullYear()} {CABINET_CONFIG.name}. Tous droits réservés.</p>
         <div className="flex gap-4">
-          <Link to="/mentions-legales" className="hover:text-accent transition-colors">Mentions légales</Link>
-          <Link to="/politique-confidentialite" className="hover:text-accent transition-colors">Politique de confidentialité</Link>
+          <Link href="/mentions-legales" className="hover:text-accent transition-colors">Mentions légales</Link>
+          <Link href="/politique-confidentialite" className="hover:text-accent transition-colors">Politique de confidentialité</Link>
         </div>
       </div>
     </div>
   </footer>
-);
+)
 
-export default Footer;
+export default Footer

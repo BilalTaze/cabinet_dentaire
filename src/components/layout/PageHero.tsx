@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
+'use client'
+
+import { motion } from "framer-motion"
 
 interface PageHeroProps {
-  label: string;
-  title: string;
-  subtitle: string;
+  label: string
+  title: string
+  subtitle: string
 }
 
 const PageHero = ({ label, title, subtitle }: PageHeroProps) => (
@@ -17,6 +19,6 @@ const PageHero = ({ label, title, subtitle }: PageHeroProps) => (
       </motion.div>
     </div>
   </section>
-);
+)
 
-export default PageHero;
+export default PageHero
