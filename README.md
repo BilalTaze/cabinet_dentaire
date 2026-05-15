@@ -16,10 +16,6 @@ npm install
 npm run dev
 ```
 
-## Déploiement
-
-Le projet peut être déployé sur Vercel, Netlify ou tout hébergement statique classique.
-
 ```sh
 npm run build
 ```
