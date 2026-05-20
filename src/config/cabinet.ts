@@ -3,7 +3,7 @@ export const CABINET_CONFIG = {
   slogan: "Votre centre de soins dentaires à Strasbourg",
   subtitle: "Soins dentaires pour adultes et enfants à Strasbourg - Elsau. Centre conventionné.",
   address: "21 Rue Léonard de Vinci",
-  logo: "/logo/logo1.webp",
+  logo: "/images/logo/logo1.webp",
   city: "Strasbourg",
   zip: "67200",
   phone: "03 88 67 72 57",

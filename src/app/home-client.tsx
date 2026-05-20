@@ -14,7 +14,11 @@ const fadeUp = {
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 }
 
-const cabinetGalleryLabels = ["Salle de soins", "Accueil", "Équipements", "Réception", "Cabinet", "Technologie"]
+const cabinetGalleryImages = [
+  "/images/image_accueil/accueil.webp",
+  "/images/image_accueil/cabinet1.webp",
+  "/images/image_accueil/cabinet2.webp",
+]
 
 /* ============ HERO ============ */
 const HeroSection = () => (
@@ -79,8 +83,8 @@ const TrustBanner = () => {
 const CabinetPresentation = () => {
   const [activeCabinetImg, setActiveCabinetImg] = useState(0)
 
-  const prevCabinetImg = () => setActiveCabinetImg(i => (i - 1 + cabinetGalleryLabels.length) % cabinetGalleryLabels.length)
-  const nextCabinetImg = () => setActiveCabinetImg(i => (i + 1) % cabinetGalleryLabels.length)
+  const prevCabinetImg = () => setActiveCabinetImg(i => (i - 1 + cabinetGalleryImages.length) % cabinetGalleryImages.length)
+  const nextCabinetImg = () => setActiveCabinetImg(i => (i + 1) % cabinetGalleryImages.length)
 
   return (
     <section className="py-10 md:py-20 bg-background">
@@ -104,7 +108,7 @@ const CabinetPresentation = () => {
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="space-y-3 max-w-lg mx-auto md:max-w-none w-full">
             <div className="relative rounded-2xl overflow-hidden aspect-[7/5] md:max-w-[560px] w-full mx-auto" style={{ boxShadow: "var(--shadow-card)" }}>
               <div className="w-full h-full bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center transition-all duration-500">
-                <span className="font-serif font-bold text-5xl text-accent/20 select-none">{cabinetGalleryLabels[activeCabinetImg]}</span>
+                <span className="font-serif font-bold text-5xl text-accent/20 select-none">{cabinetGalleryImages[activeCabinetImg]}</span>
               </div>
               <button
                 onClick={prevCabinetImg}
@@ -121,11 +125,11 @@ const CabinetPresentation = () => {
                 <ChevronRightIcon size={20} />
               </button>
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-card/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
-                {cabinetGalleryLabels[activeCabinetImg]} — {activeCabinetImg + 1}/{cabinetGalleryLabels.length}
+                {cabinetGalleryImages[activeCabinetImg]} — {activeCabinetImg + 1}/{cabinetGalleryImages.length}
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2 md:max-w-[300px] mx-auto w-full">
-              {cabinetGalleryLabels.map((label, i) => (
+              {cabinetGalleryImages.map((label, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveCabinetImg(i)}
@@ -188,7 +192,7 @@ const SoinsSection = () => {
               >
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="glass-card p-6 flex h-full flex-col overflow-hidden">
                   <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
-                    <Image src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
+                    <Image src={`/images/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
@@ -214,7 +218,7 @@ const SoinsSection = () => {
           {SOINS.map((soin, i) => (
             <motion.div key={soin.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5} className="glass-card p-6 flex flex-col">
               <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
-                <Image src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
+                <Image src={`/images/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
@@ -330,12 +334,12 @@ const TeamSection = () => {
 const TechSection = () => {
   const techIcons = [Radio, Camera, ScanLine, Box, ShieldCheck, Cpu]
   const techImages = [
-    "/logo_equipement/radio_numérique.jpeg",
-    "/logo_equipement/intra_oral.jpeg",
-    "/logo_equipement/optique_3D.jpeg",
-    "/logo_equipement/scanner_3D.jpeg",
-    "/logo_equipement/sterilisation.jpeg",
-    "/logo_equipement/equipement.webp",
+    "/images/image_equipement/radio_numérique.jpeg",
+    "/images/image_equipement/intra_oral.jpeg",
+    "/images/image_equipement/optique_3D.jpeg",
+    "/images/image_equipement/scanner_3D.jpeg",
+    "/images/image_equipement/sterilisation.jpeg",
+    "/images/image_equipement/equipement.webp",
   ]
 
   const [activeTechIndex, setActiveTechIndex] = useState(0)

@@ -45,7 +45,7 @@ const SoinsClient = () => {
                 className={`glass-card p-6 text-left transition-all ${activeSoin === soin.id ? "ring-2 ring-accent" : ""}`}
               >
                 <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
-                  <Image src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
+                  <Image src={`/images/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{soin.shortDesc}</p>
