@@ -381,12 +381,16 @@ const TechSection = () => {
                     <div className="rounded-xl overflow-hidden mb-4 h-56">
                       <Image src={techImages[i]} alt={tech.title} width={400} height={176} className="w-full h-full object-cover" />
                     </div>
-                    <div className="w-16 h-16 rounded-xl bg-mint-light flex items-center justify-center mb-4">
-                      <Icon size={22} className="text-accent" />
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 shrink-0 rounded-xl bg-mint-light flex items-center justify-center">
+                        <Icon size={20} className="text-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif font-bold text-lg mb-2">{tech.title}</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">{tech.description}</p>
+                        <span className="text-accent text-xs font-medium bg-mint-light px-3 py-1 rounded-full">{tech.benefit}</span>
+                      </div>
                     </div>
-                    <h3 className="font-serif font-bold text-lg mb-2">{tech.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-3">{tech.description}</p>
-                    <span className="text-accent text-xs font-medium bg-mint-light px-3 py-1 rounded-full">{tech.benefit}</span>
                   </motion.div>
                 </div>
               )
