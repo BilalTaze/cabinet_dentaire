@@ -15,8 +15,8 @@ const fadeUp = {
 }
 
 const cabinetGalleryImages = [
-  "/images/image_accueil/accueil.webp",
   "/images/image_accueil/cabinet1.webp",
+  "/images/image_accueil/accueil.webp",
   "/images/image_accueil/cabinet2.webp",
 ]
 
