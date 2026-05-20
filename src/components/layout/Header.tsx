@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -53,9 +54,11 @@ const Header = () => {
       {/* Main nav */}
       <div className="container flex items-center justify-between h-16 md:h-18">
         <Link href="/" className="flex items-center gap-2">
-          <img
+          <Image
             src={CABINET_CONFIG.logo}
             alt="Logo du cabinet"
+            width={140}
+            height={56}
             className="h-14 w-auto object-contain"
           />
         </Link>

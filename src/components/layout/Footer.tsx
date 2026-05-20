@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Phone, Mail, MapPin, Calendar, HeartPulse } from "lucide-react"
 import { CABINET_CONFIG } from "@/config/cabinet"
 
@@ -9,9 +10,11 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="mb-4">
-            <img
-              src="/logo_footer.png"
+            <Image
+              src="/logo/logo_footer.png"
               alt="Logo"
+              width={160}
+              height={80}
               className="h-20 w-auto object-contain"
             />
           </div>

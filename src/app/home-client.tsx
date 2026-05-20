@@ -188,7 +188,7 @@ const SoinsSection = () => {
               >
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="glass-card p-6 flex h-full flex-col overflow-hidden">
                   <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
-                    <img src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    <Image src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
@@ -214,7 +214,7 @@ const SoinsSection = () => {
           {SOINS.map((soin, i) => (
             <motion.div key={soin.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5} className="glass-card p-6 flex flex-col">
               <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden mb-4">
-                <img src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <Image src={`/logo_accueil/logo_page_${i + 1}.jpeg`} alt={soin.title} width={80} height={80} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif font-bold text-lg mb-2">{soin.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed flex-1">{soin.shortDesc}</p>
@@ -329,6 +329,14 @@ const TeamSection = () => {
 /* ============ TECHNOLOGIES ============ */
 const TechSection = () => {
   const techIcons = [Radio, Camera, ScanLine, Box, ShieldCheck, Cpu]
+  const techImages = [
+    "/logo_equipement/radio_numérique.jpeg",
+    "/logo_equipement/intra_oral.jpeg",
+    "/logo_equipement/optique_3D.jpeg",
+    "/logo_equipement/scanner_3D.jpeg",
+    "/logo_equipement/sterilisation.jpeg",
+    "/logo_equipement/equipement.webp",
+  ]
 
   const [activeTechIndex, setActiveTechIndex] = useState(0)
   const techCarouselRef = useRef<HTMLDivElement | null>(null)
@@ -353,9 +361,9 @@ const TechSection = () => {
     <section className="py-10 md:py-14 bg-background">
       <div className="container">
         <div className="text-center mb-12">
-          <span className="text-accent font-medium text-sm uppercase tracking-wide">Nos technologies</span>
-          <h2 className="section-title mt-2 mb-4">Équipements de dernière génération</h2>
-          <p className="section-subtitle mx-auto">Des équipements modernes au service de la précision, du confort et de la sécurité des soins.</p>
+          <span className="text-accent font-medium text-sm uppercase tracking-wide">Notre équipement</span>
+          <h2 className="section-title mt-2 mb-4">Un plateau technique moderne</h2>
+          <p className="section-subtitle mx-auto">Des équipements modernes au service de la qualité et de la sécurité des soins.</p>
         </div>
 
         <div className="md:hidden">
@@ -365,6 +373,9 @@ const TechSection = () => {
               return (
                 <div key={i} ref={el => { techSlideRefs.current[i] = el }} className="w-[85%] shrink-0 snap-start">
                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="glass-card p-6 h-full">
+                    <div className="rounded-xl overflow-hidden mb-4 h-56">
+                      <Image src={techImages[i]} alt={tech.title} width={400} height={176} className="w-full h-full object-cover" />
+                    </div>
                     <div className="w-16 h-16 rounded-xl bg-mint-light flex items-center justify-center mb-4">
                       <Icon size={22} className="text-accent" />
                     </div>
@@ -391,12 +402,19 @@ const TechSection = () => {
             const Icon = techIcons[i] || Cpu
             return (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5} className="glass-card p-6">
-                <div className="w-16 h-16 rounded-xl bg-mint-light flex items-center justify-center mb-4">
-                  <Icon size={22} className="text-accent" />
+                <div className="rounded-xl overflow-hidden mb-4 h-52">
+                  <Image src={techImages[i]} alt={tech.title} width={400} height={176} className="w-full h-full object-cover" />
                 </div>
-                <h3 className="font-serif font-bold text-lg mb-2">{tech.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-3">{tech.description}</p>
-                <span className="text-accent text-xs font-medium bg-mint-light px-3 py-1 rounded-full">{tech.benefit}</span>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-mint-light flex items-center justify-center">
+                    <Icon size={20} className="text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-lg mb-2">{tech.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3">{tech.description}</p>
+                    <span className="text-accent text-xs font-medium bg-mint-light px-3 py-1 rounded-full">{tech.benefit}</span>
+                  </div>
+                </div>
               </motion.div>
             )
           })}

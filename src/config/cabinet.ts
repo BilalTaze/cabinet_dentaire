@@ -3,7 +3,7 @@ export const CABINET_CONFIG = {
   slogan: "Votre centre de soins dentaires à Strasbourg",
   subtitle: "Soins dentaires pour adultes et enfants à Strasbourg - Elsau. Centre conventionné.",
   address: "21 Rue Léonard de Vinci",
-  logo: "/logo1.webp",
+  logo: "/logo/logo1.webp",
   city: "Strasbourg",
   zip: "67200",
   phone: "03 88 67 72 57",
@@ -613,9 +613,9 @@ En résumé
 
 export const TECHNOLOGIES = [
   { title: "Radio numérique", description: "Imagerie numérique haute définition pour un diagnostic rapide et précis.", benefit: "Diagnostic précis" },
-  { title: "Caméra intra-orale", description: "Visualisation en temps réel afin de mieux comprendre votre traitement.", benefit: "Communication simplifiée" },
-  { title: "Empreinte optique 3D", description: "Scanner numérique permettant des empreintes rapides et confortables.", benefit: "Confort optimal" },
-  { title: "Scanner 3D (CBCT)", description: "Imagerie 3D pour l’analyse et la planification des traitements complexes.", benefit: "Imagerie avancée" },
-  { title: "Stérilisation haute performance", description: "Protocoles de stérilisation rigoureux conformes aux normes en vigueur.", benefit: "Sécurité sanitaire" },
-  { title: "Équipements dernière génération", description: "Fauteuils ergonomiques, éclairage LED, et instruments de dernière technologie.", benefit: "Confort et performance" },
+  { title: "Caméra intra-orale", description: "Visualisation clinique et explication du traitement.", benefit: "Communication simplifiée" },
+  { title: "Empreinte optique 3D", description: "Empreinte numérique pour plus de confort et de précision.", benefit: "Confort optimal" },
+  { title: "Scanner 3D (CBCT)", description: "Imagerie 3D pour une l’analyse approfondie dans certaines situations cliniques.", benefit: "Imagerie avancée" },
+  { title: "Stérilisation", description: "Protocoles de stérilisation rigoureux conformes aux normes en vigueur.", benefit: "Sécurité sanitaire" },
+  { title: "Équipements du centre", description: "Fauteuils ergonomiques et matériels adaptés pour votre confort.", benefit: "Confort et performance" },
 ];
