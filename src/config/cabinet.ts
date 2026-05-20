@@ -203,17 +203,6 @@ export const SOINS = [
   },
 ];
 
-export const REVIEWS = [
-  { author: "Marie L.", rating: 5, text: "Excellent cabinet ! L'équipe est très professionnelle et rassurante. Je recommande vivement.", date: "Il y a 2 semaines" },
-  { author: "Pierre D.", rating: 5, text: "Dr Martin est exceptionnelle. Elle a pris le temps de tout m'expliquer et le résultat est parfait.", date: "Il y a 1 mois" },
-  { author: "Isabelle R.", rating: 5, text: "Cabinet moderne et propre. L'accueil est chaleureux. Plus de peur d'aller chez le dentiste !", date: "Il y a 1 mois" },
-  { author: "Jean-Marc T.", rating: 4, text: "Très bon suivi pour mes implants. Résultat naturel et durable. Merci à toute l'équipe.", date: "Il y a 2 mois" },
-  { author: "Sophie B.", rating: 5, text: "Mon fils de 5 ans adore y aller ! L'approche avec les enfants est formidable.", date: "Il y a 2 mois" },
-  { author: "Laurent M.", rating: 5, text: "Enfin un cabinet qui prend le temps. Les explications sont claires et les soins de qualité.", date: "Il y a 3 mois" },
-  { author: "Claire V.", rating: 5, text: "Blanchiment réussi ! Résultat naturel, je suis ravie. Équipe au top.", date: "Il y a 3 mois" },
-  { author: "François G.", rating: 4, text: "Bonne prise en charge d'urgence un samedi matin. Réactif et efficace.", date: "Il y a 4 mois" },
-];
-
 export const FAQ_ITEMS = [
   { q: "Est-ce que les soins dentaires font mal ?", a: "La grande majorité des soins sont réalisés sous anesthésie locale et sont totalement indolores. Notre priorité est votre confort. N'hésitez pas à nous signaler toute appréhension." },
   { q: "À quelle fréquence dois-je consulter ?", a: "Nous recommandons une visite de contrôle tous les 6 mois à 1 an. Un suivi régulier permet de détecter et traiter les problèmes à un stade précoce." },

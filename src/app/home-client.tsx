@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Calendar, Phone, AlertCircle, ChevronRight, MapPin, Clock, Accessibility, ArrowRight, Radio, Camera, ScanLine, Box, ShieldCheck, Cpu, ChevronLeft, ChevronRight as ChevronRightIcon, Train, Navigation as NavigationIcon, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CABINET_CONFIG, SOINS, TEAM_MEMBERS, TECHNOLOGIES } from "@/config/cabinet"
-import heroImg from "@/assets/hero-clinic.jpg"
+import heroImg from "@/assets/cabinet1.webp"
 import Image from "next/image"
 import { useRef, useState } from "react"
 import Link from "next/link"
@@ -24,7 +24,7 @@ const cabinetGalleryImages = [
 const HeroSection = () => (
   <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-[4.75rem] md:pt-[7.25rem]">
     <div className="absolute inset-0">
-      <Image src={heroImg} alt="Cabinet dentaire moderne" fill priority className="object-cover" />
+      <Image src={heroImg} alt="Cabinet dentaire moderne" fill priority className="object-cover scale-100" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
     </div>
 
@@ -107,9 +107,12 @@ const CabinetPresentation = () => {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="space-y-3 max-w-lg mx-auto md:max-w-none w-full">
             <div className="relative rounded-2xl overflow-hidden aspect-[7/5] md:max-w-[560px] w-full mx-auto" style={{ boxShadow: "var(--shadow-card)" }}>
-              <div className="w-full h-full bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center transition-all duration-500">
-                <span className="font-serif font-bold text-5xl text-accent/20 select-none">{cabinetGalleryImages[activeCabinetImg]}</span>
-              </div>
+              <Image
+                src={cabinetGalleryImages[activeCabinetImg]}
+                alt="Cabinet dentaire"
+                fill
+                className="object-cover transition-all duration-500"
+              />
               <button
                 onClick={prevCabinetImg}
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors"
@@ -125,7 +128,7 @@ const CabinetPresentation = () => {
                 <ChevronRightIcon size={20} />
               </button>
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-card/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
-                {cabinetGalleryImages[activeCabinetImg]} — {activeCabinetImg + 1}/{cabinetGalleryImages.length}
+                {activeCabinetImg + 1}/{cabinetGalleryImages.length}
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2 md:max-w-[300px] mx-auto w-full">
@@ -133,11 +136,9 @@ const CabinetPresentation = () => {
                 <button
                   key={i}
                   onClick={() => setActiveCabinetImg(i)}
-                  className={`rounded-xl overflow-hidden aspect-square transition-all ${activeCabinetImg === i ? "ring-2 ring-accent scale-[0.97]" : "opacity-70 hover:opacity-100"}`}
+                  className={`relative rounded-xl overflow-hidden aspect-square transition-all ${activeCabinetImg === i ? "ring-2 ring-accent scale-[0.97]" : "opacity-70 hover:opacity-100"}`}
                 >
-                  <div className="w-full h-full bg-gradient-to-b from-mint-light/50 to-mint-light flex items-center justify-center">
-                    <span className="font-serif text-accent/30 text-xs font-bold text-center px-1 select-none">{label}</span>
-                  </div>
+                  <Image src={label} alt={`Vue du cabinet ${i + 1}`} fill className="object-cover" />
                 </button>
               ))}
             </div>
